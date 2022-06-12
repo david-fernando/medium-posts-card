@@ -15,6 +15,7 @@
 #paths
 /public
 /playground
+/playground-next
 
 # misc
 .DS_Store
