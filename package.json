@@ -15,7 +15,8 @@
   "scripts": {
     "build": "rollup -c",
     "build-watch": "rollup -c -w",
-    "start-playground": "cd playground && yarn start"
+    "start-playground": "cd playground && yarn start",
+    "start-playground-next": "cd playground-next && yarn dev"
   },
   "eslintConfig": {
     "extends": [
