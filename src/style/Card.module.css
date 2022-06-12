@@ -1,0 +1,19 @@
+.container {
+  max-width: 260pt;
+  flex-direction: column;
+  display: flex;
+  min-height: 260pt;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 10px;
+}
+
+.thumbnail {
+  min-width: 100%;
+  min-height: 146pt;
+  max-height: 146pt;
+}
+
+.content {
+  padding: 10px;
+}
