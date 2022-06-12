@@ -1,12 +1,12 @@
 import '../style/index.css'
 import styles from '../style/Card.module.css'
 
-function Card(){
+function Card({ borderRadius = true }){
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${(borderRadius) && styles.borderRadiusContainer}`}>
       <span>
         <img
-         className={styles.thumbnail} 
+         className={`${styles.thumbnail} ${(borderRadius) && styles.borderRadiusThumbnail}`} 
          src="https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ"
          alt="Título do artigo"
         />
