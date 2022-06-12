@@ -1,9 +1,11 @@
 'use strict';
 
-require('react');
+var jsxRuntime = require('react/jsx-runtime');
 
 function Card() {
-  return /*#__PURE__*/React.createElement("h1", null, "Card");
+  return /*#__PURE__*/jsxRuntime.jsx("h1", {
+    children: "Card"
+  });
 }
 
 module.exports = Card;
