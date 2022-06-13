@@ -25,7 +25,7 @@
   padding: 10px;
 }
 
-.title, .description, .date, .tags {
+.title, .description, .date, .tags, .readMore {
   font-size: 1rem;
   color: #53565b
 }
@@ -44,7 +44,7 @@
   overflow: hidden;
 }
 
-.date, .tags {
+.date, .tags, .readMore {
   font-size: 0.8rem;
 }
 
