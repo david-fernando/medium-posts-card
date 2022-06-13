@@ -24,7 +24,7 @@ function Card({ borderRadius = true }){
         <p className={styles.date}>
           12.06.2022
         </p>
-        <p>
+        <p className={styles.tags}>
           dark-mode js-tutorial javascript
         </p>
       </span>

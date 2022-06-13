@@ -25,7 +25,7 @@
   padding: 10px;
 }
 
-.title, .description, .date {
+.title, .description, .date, .tags {
   font-size: 1rem;
   color: #53565b
 }
@@ -44,6 +44,10 @@
   overflow: hidden;
 }
 
-.date {
+.date, .tags {
   font-size: 0.8rem;
+}
+
+.tags {
+  word-spacing: 0.5rem;
 }
