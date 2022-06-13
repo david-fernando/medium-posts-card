@@ -2,12 +2,17 @@ import '../style/index.css'
 import styles from '../style/Card.module.css'
 
 function Card({ borderRadius = true }){
+
+  const borderRadiusContainer = (borderRadius) && styles.borderRadiusContainer
+  const borderRadiusThumbnail = (borderRadius) && styles.borderRadiusThumbnail
+  const imageUrl = 'https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ'
+  
   return (
-    <div className={`${styles.container} ${(borderRadius) && styles.borderRadiusContainer}`}>
+    <div className={`${styles.container} ${borderRadiusContainer}`}>
       <span>
         <img
-         className={`${styles.thumbnail} ${(borderRadius) && styles.borderRadiusThumbnail}`} 
-         src="https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ"
+         className={`${styles.thumbnail} ${borderRadiusThumbnail}`} 
+         src={imageUrl}
          alt="Título do artigo"
         />
       </span>
