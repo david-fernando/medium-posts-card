@@ -21,7 +21,7 @@ function Card({ borderRadius = true }){
         <p className={styles.description}>
         is simply dummy text of the printing and typesetting industry.
         </p>
-        <p>
+        <p className={styles.date}>
           12.06.2022
         </p>
         <p>

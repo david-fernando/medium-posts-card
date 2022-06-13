@@ -25,7 +25,7 @@
   padding: 10px;
 }
 
-.title, .description {
+.title, .description, .date {
   font-size: 1rem;
   color: #53565b
 }
@@ -42,4 +42,8 @@
   -webkit-line-clamp: 2;
   display: -webkit-box;
   overflow: hidden;
+}
+
+.date {
+  font-size: 0.8rem;
 }
