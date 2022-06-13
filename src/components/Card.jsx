@@ -17,7 +17,7 @@ function Card({ borderRadius = true }){
         />
       </span>
       <span className={styles.content}>
-        <h3>Título do artigo</h3>
+        <span className={styles.title}>Título do artigo</span>
         <p>
         is simply dummy text of the printing and typesetting industry.
         </p>

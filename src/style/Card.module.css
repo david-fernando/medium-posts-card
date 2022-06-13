@@ -24,3 +24,12 @@
 .content {
   padding: 10px;
 }
+
+.title, .description {
+  font-size: 1.6rem;
+  color: #53565b
+}
+
+.title {
+  font-weight: 700;
+}
