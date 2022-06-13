@@ -1,7 +1,7 @@
 import '../style/index.css'
 import styles from '../style/Card.module.css'
 
-function Card({ borderRadius = true }){
+function Card({ borderRadius = true, showTags = false }){
 
   const borderRadiusContainer = (borderRadius) && styles.borderRadiusContainer
   const borderRadiusThumbnail = (borderRadius) && styles.borderRadiusThumbnail
@@ -24,9 +24,15 @@ function Card({ borderRadius = true }){
         <p className={styles.date}>
           12.06.2022
         </p>
-        <p className={styles.tags}>
-          dark-mode js-tutorial javascript
-        </p>
+        {
+          (showTags)? (
+            <p className={styles.tags}>
+            dark-mode js-tutorial javascript
+          </p>
+          ) : (
+            <a href='localhost:3000' className={styles.readMore}>Read more</a>
+          )
+        }
       </span>
     </div>
   )
