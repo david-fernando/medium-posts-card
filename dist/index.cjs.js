@@ -2,7 +2,7 @@
 
 var jsxRuntime = require('react/jsx-runtime');
 
-var styles = ".container {\r\n  width: min-content;\r\n  height: min-content;\r\n  min-width: 20rem;\r\n  max-width: 22rem;\r\n  min-height: 20rem;\r\n  max-height: 22rem;\r\n  flex-direction: column;\r\n  display: flex;\r\n  background: #fff;\r\n  border: 1px solid rgba(0,0,0,.2);\r\n}\r\n\r\n.borderRadiusContainer {\r\n  border-radius: 10px;\r\n}\r\n\r\n.thumbnail {\r\n  width: 100%;\r\n  height: 12.533rem;\r\n}\r\n\r\n.borderRadiusThumbnail {\r\n  border-top-left-radius: 10px;\r\n  border-top-right-radius: 10px;\r\n}\r\n\r\n.content {\r\n  padding: 10px;\r\n}\r\n\r\n.title, .description, .date, .tags, .readMore {\r\n  font-size: 1rem;\r\n  color: #53565b\r\n}\r\n\r\n.title {\r\n  font-weight: 700;\r\n}\r\n\r\n.description {\r\n  text-align: initial;\r\n  max-height: 44%;\r\n  text-overflow: ellipsis;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-line-clamp: 2;\r\n  display: -webkit-box;\r\n  overflow: hidden;\r\n}\r\n\r\n.date, .tags, .readMore {\r\n  font-size: 0.8rem;\r\n}\r\n\r\n.tags {\r\n  word-spacing: 0.5rem;\r\n}";
+var styles = {"container":"Card-module_container__SodM9","borderRadiusContainer":"Card-module_borderRadiusContainer__37hyI","thumbnail":"Card-module_thumbnail__GicTK","borderRadiusThumbnail":"Card-module_borderRadiusThumbnail__m-SrW","content":"Card-module_content__7fty0","title":"Card-module_title__otTtq","description":"Card-module_description__v-qMr","date":"Card-module_date__mbUlM","tags":"Card-module_tags__yIEry","readMore":"Card-module_readMore__ld-WG"};
 
 function Card(_ref) {
   var _ref$borderRadius = _ref.borderRadius,
