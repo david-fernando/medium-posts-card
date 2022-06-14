@@ -43,10 +43,12 @@
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@rollup/plugin-babel": "^5.3.1",
+    "postcss": "^8.4.14",
     "rollup": "^2.75.6",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-import-css": "^3.0.3",
-    "rollup-plugin-peer-deps-external": "^2.2.4"
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2"
   },
   "peerDependencies": {
     "react": "^18.1.0",
