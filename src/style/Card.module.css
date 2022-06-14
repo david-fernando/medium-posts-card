@@ -1,6 +1,10 @@
 .container {
+  width: min-content;
+  height: min-content;
+  min-width: 20rem;
   max-width: 22rem;
-  min-height: 22rem;
+  min-height: 20rem;
+  max-height: 22rem;
   flex-direction: column;
   display: flex;
   background: #fff;
