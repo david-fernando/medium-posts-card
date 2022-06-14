@@ -1,4 +1,3 @@
-import '../style/index.css'
 import styles from '../style/Card.module.css'
 
 function Card({ borderRadius = true, showTags = false, showDate = false }){
