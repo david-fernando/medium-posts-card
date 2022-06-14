@@ -1,8 +1,8 @@
 import babel from '@rollup/plugin-babel';
 import external from 'rollup-plugin-peer-deps-external';
 import del from 'rollup-plugin-delete';
-import css from "rollup-plugin-import-css";
 import pkg from './package.json';
+import postcss from 'rollup-plugin-postcss'
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -18,7 +18,10 @@ export default {
             babelHelpers: 'bundled' 
         }),
         del({ targets: ['dist/*'] }),
-        css()
+        postcss({
+            extract: true,
+            modules: true,
+        })
     ],
     external: Object.keys(pkg.peerDependencies || {}),
 };
