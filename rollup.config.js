@@ -19,7 +19,6 @@ export default {
         }),
         del({ targets: ['dist/*'] }),
         postcss({
-            extract: true,
             modules: true,
         })
     ],
