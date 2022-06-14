@@ -1,8 +1,7 @@
 import '../style/index.css'
 import styles from '../style/Card.module.css'
 
-function Card({ borderRadius = true, showTags = false }){
-
+function Card({ borderRadius = true, showTags = false, showDate = false }){
   const borderRadiusContainer = (borderRadius) && styles.borderRadiusContainer
   const borderRadiusThumbnail = (borderRadius) && styles.borderRadiusThumbnail
   const imageUrl = 'https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ'
@@ -19,18 +18,20 @@ function Card({ borderRadius = true, showTags = false }){
       <span className={styles.content}>
         <span className={styles.title}>Título do artigo</span>
         <p className={styles.description}>
-        is simply dummy text of the printing and typesetting industry.
-        </p>
-        <p className={styles.date}>
-          12.06.2022
+          Um pequeno tutorial de como fazer dark theme com HTML, CSS e JavaScript puro.
         </p>
         {
-          (showTags)? (
+          (showDate) && (
+            <p className={styles.date}>
+              12.06.2022
+            </p>
+          )
+        }
+        {
+          (showTags) && (
             <p className={styles.tags}>
-            dark-mode js-tutorial javascript
-          </p>
-          ) : (
-            <a href='localhost:3000' className={styles.readMore}>Read more</a>
+              dark-mode js-tutorial javascript
+            </p>
           )
         }
       </span>
