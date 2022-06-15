@@ -3,6 +3,9 @@ import external from 'rollup-plugin-peer-deps-external';
 import del from 'rollup-plugin-delete';
 import pkg from './package.json';
 import postcss from 'rollup-plugin-postcss'
+import postcssModules from 'postcss-modules';
+
+const cssExportMap = {};
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -20,6 +23,14 @@ export default {
         del({ targets: ['dist/*'] }),
         postcss({
             modules: true,
+            plugins: [
+                postcssModules({
+                    getJSON (id, exportTokens) {
+                      cssExportMap[id] = exportTokens;
+                    }
+                })
+            ],
+            extract: true
         })
     ],
     external: Object.keys(pkg.peerDependencies || {}),
