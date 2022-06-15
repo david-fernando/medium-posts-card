@@ -18,7 +18,10 @@ export default {
             babelHelpers: 'bundled' 
         }),
         del({ targets: ['dist/*'] }),
-        styles({ modules: true })
+        styles({ 
+            modules: true,
+            mode: ['extract', 'style.css']
+         })
     ],
     external: Object.keys(pkg.peerDependencies || {}),
 };
