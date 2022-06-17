@@ -4,7 +4,7 @@
   "private": true,
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "source": "src/index.js",
+  "source": "src/index.tsx",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -52,7 +52,9 @@
     "rollup": "^2.75.6",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-styles": "^4.0.0"
+    "rollup-plugin-styles": "^4.0.0",
+    "rollup-plugin-typescript2": "^0.32.1",
+    "tslib": "^2.4.0"
   },
   "peerDependencies": {
     "react": "^18.1.0",
