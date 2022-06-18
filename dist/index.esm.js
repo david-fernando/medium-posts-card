@@ -34,11 +34,12 @@ var modules_e5a68879 = {"container":"Card_module_container__845f97ef","borderRad
 n(css,{});
 
 function Card(_a) {
-    var _b = _a.borderRadius, borderRadius = _b === void 0 ? true : _b, _c = _a.showTags, showTags = _c === void 0 ? false : _c, _d = _a.showDate, showDate = _d === void 0 ? false : _d;
+    var _b = _a.options, options = _b === void 0 ? {} : _b;
+    var borderRadius = (options.hasOwnProperty('borderRadius')) ? options.borderRadius : true;
     var borderRadiusContainer = (borderRadius) && modules_e5a68879.borderRadiusContainer;
     var borderRadiusThumbnail = (borderRadius) && modules_e5a68879.borderRadiusThumbnail;
     var imageUrl = 'https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ';
-    return (jsxs("div", __assign({ className: classnames(modules_e5a68879.container, borderRadiusContainer) }, { children: [jsx("span", { children: jsx("img", { className: classnames(modules_e5a68879.thumbnail, borderRadiusThumbnail), src: imageUrl, alt: "T\u00EDtulo do artigo" }) }), jsxs("span", __assign({ className: modules_e5a68879.content }, { children: [jsx("span", __assign({ className: modules_e5a68879.title }, { children: "T\u00EDtulo do artigo" })), jsx("p", __assign({ className: modules_e5a68879.description }, { children: "Um pequeno tutorial de como fazer dark theme com HTML, CSS e JavaScript puro." })), (showDate) && (jsx("p", __assign({ className: modules_e5a68879.date }, { children: "12.06.2022" }))), (showTags) && (jsx("p", __assign({ className: modules_e5a68879.tags }, { children: "dark-mode js-tutorial javascript" })))] }))] })));
+    return (jsxs("div", __assign({ className: classnames(modules_e5a68879.container, borderRadiusContainer) }, { children: [jsx("span", { children: jsx("img", { className: classnames(modules_e5a68879.thumbnail, borderRadiusThumbnail), src: imageUrl, alt: "T\u00EDtulo do artigo" }) }), jsxs("span", __assign({ className: modules_e5a68879.content }, { children: [jsx("span", __assign({ className: modules_e5a68879.title }, { children: "T\u00EDtulo do artigo" })), jsx("p", __assign({ className: modules_e5a68879.description }, { children: "Um pequeno tutorial de como fazer dark theme com HTML, CSS e JavaScript puro." })), (options.showDate) && (jsx("p", __assign({ className: modules_e5a68879.date }, { children: "12.06.2022" }))), (options.showTags) && (jsx("p", __assign({ className: modules_e5a68879.tags }, { children: "dark-mode js-tutorial javascript" })))] }))] })));
 }
 
 export { Card as default };
