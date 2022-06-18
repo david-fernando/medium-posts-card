@@ -2,7 +2,18 @@ import classnames from 'classnames';
 
 import styles from '../style/Card.module.css'
 
-function Card({ borderRadius = true, showTags = false, showDate = false }){
+type Props = {
+  options?: {
+    borderRadius?: boolean
+    showTags?: boolean
+    showDate?: boolean
+  }
+}
+
+function Card({ options = {} }: Props){
+
+  const borderRadius = (options.hasOwnProperty('borderRadius'))? options.borderRadius : true
+
   const borderRadiusContainer = (borderRadius) && styles.borderRadiusContainer
   const borderRadiusThumbnail = (borderRadius) && styles.borderRadiusThumbnail
   const imageUrl = 'https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ'
@@ -22,14 +33,14 @@ function Card({ borderRadius = true, showTags = false, showDate = false }){
           Um pequeno tutorial de como fazer dark theme com HTML, CSS e JavaScript puro.
         </p>
         {
-          (showDate) && (
+          (options.showDate) && (
             <p className={styles.date}>
               12.06.2022
             </p>
           )
         }
         {
-          (showTags) && (
+          (options.showTags) && (
             <p className={styles.tags}>
               dark-mode js-tutorial javascript
             </p>
