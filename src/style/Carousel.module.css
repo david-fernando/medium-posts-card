@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  height: min-content;
+  min-height: 23.9rem;
+  max-height: 26rem;
+  display: flex;
+  background: #fff;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  position: relative;
+  background: #fff;
+  gap: 1rem;
+}
