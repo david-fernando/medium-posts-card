@@ -1,22 +1,22 @@
 import classnames from 'classnames';
+import { CardProps } from '../interface/interface'
 
 import styles from '../style/Card.module.css'
 
-type Props = {
-  options?: {
-    borderRadius?: boolean
-    showTags?: boolean
-    showDate?: boolean
-  }
-}
-
-function Card({ options = {} }: Props){
+function Card({ userdata, options = {} }: CardProps){
 
   const borderRadius = (options.hasOwnProperty('borderRadius'))? options.borderRadius : true
 
   const borderRadiusContainer = (borderRadius) && styles.borderRadiusContainer
   const borderRadiusThumbnail = (borderRadius) && styles.borderRadiusThumbnail
-  const imageUrl = 'https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ'
+
+  const mediumUrlBlocked = userdata.image.split('.clientViewed')[0]
+
+  const tags = (userdata.tags.length === 0)? ['NoTags']: userdata.tags
+
+  const tagsWithBlankSpace = tags.map((item: any, index: number) => item.concat(' '))
+
+  const imageUrl = (mediumUrlBlocked === 'https://medium.com/_/stat?event=post')? 'https://placehold.jp/bdbdc2/ffffff/250x250.png?text=No%20image' : userdata.image
   
   return (
     <div className={classnames(styles.container, borderRadiusContainer)}>
@@ -24,25 +24,25 @@ function Card({ options = {} }: Props){
         <img
          className={classnames(styles.thumbnail, borderRadiusThumbnail)} 
          src={imageUrl}
-         alt="Título do artigo"
+         alt={userdata.title}
         />
       </span>
       <span className={styles.content}>
-        <span className={styles.title}>Título do artigo</span>
+        <span className={styles.title}>{ userdata.title }</span>
         <p className={styles.description}>
-          Um pequeno tutorial de como fazer dark theme com HTML, CSS e JavaScript puro.
+          { userdata.description }
         </p>
         {
           (options.showDate) && (
             <p className={styles.date}>
-              12.06.2022
+              { userdata.date }
             </p>
           )
         }
         {
           (options.showTags) && (
             <p className={styles.tags}>
-              dark-mode js-tutorial javascript
+              { tagsWithBlankSpace }
             </p>
           )
         }
