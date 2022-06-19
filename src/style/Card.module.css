@@ -4,7 +4,7 @@
   min-width: 20rem;
   max-width: 22rem;
   min-height: 20rem;
-  max-height: 22rem;
+  max-height: 23rem;
   flex-direction: column;
   display: flex;
   background: #fff;
@@ -57,4 +57,5 @@
 
 .tags {
   word-spacing: 0.5rem;
+  line-height: 1.3rem;
 }
