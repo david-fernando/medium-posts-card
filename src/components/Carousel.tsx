@@ -23,8 +23,8 @@ function Carousel({ username, options = {} }: Props){
       <span className={styles.content}>
         {
           dataMedium.map((item: any, index: number) => (
-            <a href={item.link} key={index} target={nameTarget}>
-              <Card userdata={item}  options={options} />
+            <a href={item.link} target={nameTarget} key={index} >
+              <Card userdata={item} options={options} />
             </a>
           ))
         }
