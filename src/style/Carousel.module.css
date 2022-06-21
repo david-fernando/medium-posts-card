@@ -8,6 +8,10 @@
   overflow: hidden;
 }
 
+:global(a) {
+  text-decoration: none;
+}
+
 .content {
   display: flex;
   position: relative;
