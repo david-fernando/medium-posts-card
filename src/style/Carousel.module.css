@@ -14,3 +14,31 @@
   background: #fff;
   gap: 1rem;
 }
+
+.carouselButton {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  position: absolute;
+  top: 9rem;
+  border: 0;
+  background: rgba(0,0,0,.5);
+  opacity: 1;
+}
+
+.previousButton {
+  position: absolute;
+  left: 0.5rem;
+}
+
+.nextButton {
+  margin-left: 89%;
+}
+
+.iconButton > :local(polyline) {
+  stroke: #fff;
+}
