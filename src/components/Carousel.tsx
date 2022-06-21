@@ -1,26 +1,16 @@
-import { useState, useEffect, Fragment } from 'react';
-import axios from 'axios'
+import { Fragment } from 'react';
 import classnames from 'classnames';
 import { GrFormPrevious, GrFormNext } from 'react-icons/gr'
 import { Props } from '../interface/interface'
 import Card from './Card'
+import useFetch from '../hooks/useFetch';
 
 import styles from '../style/Carousel.module.css'
 
+
 function Carousel({ username, options }: Props){
-  const [ dataMedium, setDataMedium ] : Array<any> = useState([])
 
-  useEffect(()=>{
-    async function fetchData(){
-      const response = await axios.get(`https://mediumpostapi.herokuapp.com/?usermedium=${username}`)
-  
-      const data = response.data.dataMedium
-
-      setDataMedium(data)
-    }
-    
-    fetchData()
-  }, [username])
+  const { dataMedium } = useFetch(`https://mediumpostapi.herokuapp.com/?usermedium=${username}`)
 
   return (
     <div className={styles.container}>
