@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import classnames from 'classnames';
 import { GrFormPrevious, GrFormNext } from 'react-icons/gr'
 import { Props } from '../interface/interface'
@@ -8,9 +7,13 @@ import useFetch from '../hooks/useFetch';
 import styles from '../style/Carousel.module.css'
 
 
-function Carousel({ username, options }: Props){
+function Carousel({ username, options = {} }: Props){
 
   const { dataMedium } = useFetch(`https://mediumpostapi.herokuapp.com/?usermedium=${username}`)
+
+  const openInNewTab = (options.hasOwnProperty('openInNewTab'))? options.openInNewTab : true
+
+  const nameTarget = (openInNewTab)? '_blank' : '_self'
 
   return (
     <div className={styles.container}>
@@ -20,9 +23,9 @@ function Carousel({ username, options }: Props){
       <span className={styles.content}>
         {
           dataMedium.map((item: any, index: number) => (
-            <Fragment key={index}>
+            <a href={item.link} key={index} target={nameTarget}>
               <Card userdata={item}  options={options} />
-            </Fragment>
+            </a>
           ))
         }
       </span>
