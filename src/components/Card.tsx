@@ -4,19 +4,15 @@ import { CardProps } from '../interface/interface'
 import styles from '../style/Card.module.css'
 
 function Card({ userdata, options = {} }: CardProps){
-
   const borderRadius = (options.hasOwnProperty('borderRadius'))? options.borderRadius : true
-
   const borderRadiusContainer = (borderRadius) && styles.borderRadiusContainer
   const borderRadiusThumbnail = (borderRadius) && styles.borderRadiusThumbnail
-
-  const mediumUrlBlocked = userdata.image.split('.clientViewed')[0]
-
+  const mediumUrl = userdata.image.split('.clientViewed')[0]
+  const mediumUrlBlocked = 'https://medium.com/_/stat?event=post'
+  const placeholderUrl = 'https://placehold.jp/bdbdc2/ffffff/250x250.png?text=No%20image'
   const tags = (userdata.tags.length === 0)? ['NoTags']: userdata.tags
-
   const tagsWithBlankSpace = tags.map((item: any, index: number) => item.concat(' '))
-
-  const imageUrl = (mediumUrlBlocked === 'https://medium.com/_/stat?event=post')? 'https://placehold.jp/bdbdc2/ffffff/250x250.png?text=No%20image' : userdata.image
+  const imageUrl = (mediumUrl === mediumUrlBlocked)? placeholderUrl : userdata.image
   
   return (
     <div className={classnames(styles.container, borderRadiusContainer)}>
