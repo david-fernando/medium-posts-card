@@ -1,5 +1,7 @@
 import { useState, useEffect, Fragment } from 'react';
 import axios from 'axios'
+import classnames from 'classnames';
+import { GrFormPrevious, GrFormNext } from 'react-icons/gr'
 import { Props } from '../interface/interface'
 import Card from './Card'
 
@@ -22,6 +24,9 @@ function Carousel({ username, options }: Props){
 
   return (
     <div className={styles.container}>
+      <button className={classnames(styles.carouselButton, styles.previousButton)} >
+        <GrFormPrevious className={styles.iconButton} size={16} />
+      </button>
       <span className={styles.content}>
         {
           dataMedium.map((item: any, index: number) => (
@@ -31,6 +36,9 @@ function Carousel({ username, options }: Props){
           ))
         }
       </span>
+      <button className={classnames(styles.carouselButton, styles.nextButton)} >
+        <GrFormNext className={styles.iconButton} size={16} />
+      </button>
     </div>
   )
 }
