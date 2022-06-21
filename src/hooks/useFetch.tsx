@@ -11,7 +11,7 @@ function useFetch(url: string){
       setDataMedium(data)
     }
     fetchData()
-  }, [])
+  }, [url])
 
   return {
     dataMedium
