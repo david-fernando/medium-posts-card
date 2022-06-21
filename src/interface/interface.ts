@@ -2,7 +2,8 @@ interface Options {
   options?: {
     borderRadius?: boolean,
     showTags?: boolean,
-    showDate?: boolean
+    showDate?: boolean,
+    openInNewTab?: boolean
   }
 }
 
