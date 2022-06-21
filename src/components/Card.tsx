@@ -1,17 +1,20 @@
 import classnames from 'classnames';
+import useArray from '../hooks/useArray';
 import { CardProps } from '../interface/interface'
 
 import styles from '../style/Card.module.css'
 
 function Card({ userdata, options = {} }: CardProps){
+  const { arrayIsEmpty } = useArray()
+
   const borderRadius = (options.hasOwnProperty('borderRadius'))? options.borderRadius : true
   const borderRadiusContainer = (borderRadius) && styles.borderRadiusContainer
   const borderRadiusThumbnail = (borderRadius) && styles.borderRadiusThumbnail
   const mediumUrl = userdata.image.split('.clientViewed')[0]
   const mediumUrlBlocked = 'https://medium.com/_/stat?event=post'
   const placeholderUrl = 'https://placehold.jp/bdbdc2/ffffff/250x250.png?text=No%20image'
-  const tags = (userdata.tags.length === 0)? ['NoTags']: userdata.tags
-  const tagsWithBlankSpace = tags.map((item: any, index: number) => item.concat(' '))
+  const tags = (arrayIsEmpty(userdata.tags))? ['NoTags']: userdata.tags
+  const tagsWithBlankSpace = tags.map((item: string, index: number) => item.concat(' '))
   const imageUrl = (mediumUrl === mediumUrlBlocked)? placeholderUrl : userdata.image
   
   return (
