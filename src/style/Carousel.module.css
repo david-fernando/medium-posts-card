@@ -1,3 +1,7 @@
+:global(a) {
+  text-decoration: none;
+}
+
 .container {
   width: 100%;
   height: min-content;
@@ -8,9 +12,6 @@
   overflow: hidden;
 }
 
-:global(a) {
-  text-decoration: none;
-}
 
 .content {
   display: flex;
