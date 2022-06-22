@@ -35,7 +35,7 @@ function Carousel({ username, options = {} }: Props){
       <button onClick={() => moveBack()} className={classnames(styles.carouselButton, styles.previousButton)} >
         <GrFormPrevious className={styles.iconButton} size={16} />
       </button>
-      <span className={styles.content} style={{right: `${moveRight}rem`}} >
+      <span className={styles.content} style={{right: `${moveRight}rem`, transition: 'right 0.6s linear' }} >
         {
           dataMedium.map((item: any, index: number) => (
             <a href={item.link} target={nameTarget} key={index} >
