@@ -7,13 +7,14 @@ function useIsVisible(container: any, element: any){
 
   const elementDefaultValue = { x: 0 }
   const containerDefaultValue = { width: 0 }
+  const timeInMiliseconds = 10
 
   setTimeout(()=>{
     const { x } = element.current?.getBoundingClientRect?.() || elementDefaultValue
     setElementPosition(x)
     const { width } = container.current?.getBoundingClientRect?.() || containerDefaultValue
     setContainerWidth(width)
-  }, 20)
+  }, timeInMiliseconds)
 
   useEffect(()=>{
     determineIfElementIsVisible()
