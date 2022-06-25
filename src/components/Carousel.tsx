@@ -18,7 +18,7 @@ function Carousel({ username, options = {} }: Props){
   const nameTarget = (openInNewTab)? '_blank' : '_self'
   const cardContainer:any = useRef()
   const carouselContainer:any = useRef()
-  const cardIsVisible:boolean = useIsVisible(carouselContainer ,cardContainer)
+  const cardIsVisible:boolean = useIsVisible(carouselContainer, cardContainer)
   const { returnLastCard } = useLastCard()
 
   return (
