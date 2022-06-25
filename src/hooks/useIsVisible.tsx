@@ -21,7 +21,7 @@ function useIsVisible(container: any, element: any){
   }, [elementPosition])
 
   function determineIfElementIsVisible(){
-    const isElementVisible =  (elementPosition < containerWidth)? true : false
+    const isElementVisible = (elementPosition < containerWidth)? true : false
 
     setIsVisible(isElementVisible)
   }
