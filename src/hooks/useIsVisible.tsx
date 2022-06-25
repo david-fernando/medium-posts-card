@@ -7,7 +7,7 @@ function useIsVisible(container: any, element: any){
 
   const elementDefaultValue = { x: 0 }
   const containerDefaultValue = { width: 0 }
-  const timeInMiliseconds = 10
+  const timeInMiliseconds = 20
 
   setTimeout(()=>{
     const { x } = element.current?.getBoundingClientRect?.() || elementDefaultValue
