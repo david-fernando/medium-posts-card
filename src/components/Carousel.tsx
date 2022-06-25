@@ -6,6 +6,7 @@ import Card from './Card'
 import useFetch from '../hooks/useFetch';
 import useCarousel from '../hooks/useCarousel';
 import useIsVisible from '../hooks/useIsVisible';
+import useLastCard from '../hooks/useLastCard';
 
 import styles from '../style/Carousel.module.css'
 
@@ -18,13 +19,7 @@ function Carousel({ username, options = {} }: Props){
   const cardContainer:any = useRef()
   const carouselContainer:any = useRef()
   const cardIsVisible:boolean = useIsVisible(carouselContainer ,cardContainer)
-  const numberOfCards = dataMedium.length - 1
-
-  const handleLastCard = (cardItem: number) => {
-    const lastCard = (cardItem === numberOfCards)? cardContainer  : null
-
-    return lastCard
-  }
+  const { returnLastCard } = useLastCard()
 
   return (
     <div className={styles.container} ref={carouselContainer} >
@@ -34,7 +29,7 @@ function Carousel({ username, options = {} }: Props){
       <span className={styles.content} style={{right: `${moveRight}rem`, transition: 'right 0.6s linear' }} >
         {
           dataMedium.map((item: any, index: number) => (
-            <a href={item.link} ref={handleLastCard(index)} target={nameTarget} key={index} >
+            <a href={item.link} ref={returnLastCard(index, dataMedium, cardContainer)} target={nameTarget} key={index} >
               <Card userdata={item} options={options} />
             </a>
           ))
