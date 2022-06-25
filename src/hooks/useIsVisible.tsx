@@ -17,6 +17,7 @@ function useIsVisible(container: any, element: any){
 
   useEffect(()=>{
     determineIfElementIsVisible()
+    // eslint-disable-next-line 
   }, [elementPosition])
 
   function determineIfElementIsVisible(){
