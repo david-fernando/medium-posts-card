@@ -1,10 +1,14 @@
 function useArray(){
-  function arrayIsEmpty(array: any[]){
-    return (array.length === 0)? true : false
+  function array(array: any[]){
+    const isEmpty = (array.length === 0)? true : false
+
+    return {
+      isEmpty
+    }
   }
 
   return {
-    arrayIsEmpty
+    array
   }
 }
 
