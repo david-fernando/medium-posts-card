@@ -5,11 +5,12 @@
 .container {
   width: 100%;
   height: min-content;
-  min-height: 23.9rem;
+  min-height: 18.3rem;
   max-height: 26rem;
   display: flex;
   background: #fff;
   overflow: hidden;
+  padding-bottom: 0.2rem
 }
 
 
