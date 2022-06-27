@@ -11,7 +11,7 @@ import useLastCard from '../hooks/useLastCard';
 import styles from '../style/Carousel.module.css'
 
 function Carousel({ username, options = {} }: Props){
-  const { moveForward, moveBack, moveRight } = useCarousel()
+  const { moveForward, moveBack, position } = useCarousel()
 
   const { dataMedium } = useFetch(`https://mediumpostapi.herokuapp.com/?usermedium=${username}`)
   const openInNewTab = (options.hasOwnProperty('openInNewTab'))? options.openInNewTab : true
@@ -24,13 +24,13 @@ function Carousel({ username, options = {} }: Props){
   return (
     <div className={styles.container} ref={carouselContainer} >
       {
-        (moveRight > 0) && (
+        (position > 0) && (
           <button onClick={() => moveBack()} className={classnames(styles.carouselButton, styles.previousButton)} >
             <GrFormPrevious className={styles.iconButton} size={24} />
           </button>
         )
       }
-      <span className={styles.content} style={{right: `${moveRight}rem`, transition: 'right 0.6s linear' }} >
+      <span className={styles.content} style={{right: `${position}rem`, transition: 'right 0.6s linear' }} >
         {
           dataMedium.map((item: any, index: number) => (
             <a href={item.link} ref={returnLastCard(index, dataMedium, cardContainer)} target={nameTarget} key={index} >

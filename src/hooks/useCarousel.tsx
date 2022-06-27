@@ -1,24 +1,24 @@
 import { useState } from 'react'
 
 function useCarousel(){
-  const [ moveRight, setMoveRight ] = useState(0)
+  const [ position, setPosition ] = useState(0)
 
   const cardWidth = 19
 
   function moveForward(cardIsVisible: boolean) {
     if(!cardIsVisible){
-      setMoveRight(moveRight + cardWidth)
+      setPosition(position + cardWidth)
     }
   }
 
   function moveBack() {
-    if(moveRight > 0){
-      setMoveRight(moveRight - cardWidth)
+    if(position > 0){
+      setPosition(position - cardWidth)
     }
   }
 
   return {
-    moveRight,
+    position,
     moveForward,
     moveBack,
   }
