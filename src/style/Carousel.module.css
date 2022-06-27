@@ -42,13 +42,25 @@
 }
 
 .nextButton {
-  margin-left: 89%;
+  margin-left: 85%;
 }
 
 .iconButton > :local(polyline) {
   stroke: #fff;
 }
 
+
+@media (min-width: 482px) {
+  .nextButton {
+    margin-left: 87%;
+  } 
+}
+
+@media (min-width: 582px) {
+  .nextButton {
+    margin-left: 89%;
+  } 
+}
 
 @media (min-width: 643px) {
   .nextButton {
