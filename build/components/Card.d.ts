@@ -1,9 +1,3 @@
-declare type Props = {
-    options?: {
-        borderRadius?: boolean;
-        showTags?: boolean;
-        showDate?: boolean;
-    };
-};
-declare function Card({ options }: Props): JSX.Element;
+import { CardProps } from '../interface/interface';
+declare function Card({ userdata, options }: CardProps): JSX.Element;
 export default Card;
