@@ -26,7 +26,7 @@ function Carousel({ username, options = {} }: Props){
       {
         (moveRight > 0) && (
           <button onClick={() => moveBack()} className={classnames(styles.carouselButton, styles.previousButton)} >
-            <GrFormPrevious className={styles.iconButton} size={16} />
+            <GrFormPrevious className={styles.iconButton} size={24} />
           </button>
         )
       }
@@ -42,7 +42,7 @@ function Carousel({ username, options = {} }: Props){
       {
         (!cardIsVisible) && (
           <button onClick={() => moveForward(cardIsVisible)} className={classnames(styles.carouselButton, styles.nextButton)} >
-            <GrFormNext className={styles.iconButton} size={16} />
+            <GrFormNext className={styles.iconButton} size={24} />
           </button>
         )
       }
