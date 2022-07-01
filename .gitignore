@@ -15,6 +15,7 @@
 /public
 /playground
 /playground-next
+/.storybook
 
 # misc
 .DS_Store
