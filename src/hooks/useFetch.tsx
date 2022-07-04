@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useIsomorphicEffect } from "rooks";
 import axios from 'axios'
 
 function useFetch(url: string){
   const [ dataMedium, setDataMedium ] : Array<any> = useState([])
   
-  useEffect(()=>{
+  useIsomorphicEffect(()=>{
     async function fetchData(){
       const response = await axios.get(url)
       const data = response.data.dataMedium
