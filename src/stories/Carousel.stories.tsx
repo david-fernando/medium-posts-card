@@ -4,4 +4,4 @@ export default {
   component: Carousel
 }
 
-export const CarouseLStory = () => <Carousel username="alex.streza" />
+export const CarouselStory = () => <Carousel username="alex.streza" />
