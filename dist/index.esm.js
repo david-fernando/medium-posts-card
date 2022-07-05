@@ -2,6 +2,7 @@ import { jsxs, jsx } from 'react/jsx-runtime';
 import { useState, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import { GrFormPrevious, GrFormNext } from 'react-icons/gr';
+import { useIsomorphicEffect } from 'rooks';
 import axios from 'axios';
 
 /******************************************************************************
@@ -103,7 +104,7 @@ function Card(_a) {
 
 function useFetch(url) {
     var _a = useState([]), dataMedium = _a[0], setDataMedium = _a[1];
-    useEffect(function () {
+    useIsomorphicEffect(function () {
         function fetchData() {
             return __awaiter(this, void 0, void 0, function () {
                 var response, data;
@@ -128,15 +129,15 @@ function useFetch(url) {
 
 function useCarousel() {
     var _a = useState(0), position = _a[0], setPosition = _a[1];
-    var cardWidth = 19;
+    var displacement = 19;
     function moveForward(cardIsVisible) {
         if (!cardIsVisible) {
-            setPosition(position + cardWidth);
+            setPosition(position + displacement);
         }
     }
     function moveBack() {
         if (position > 0) {
-            setPosition(position - cardWidth);
+            setPosition(position - displacement);
         }
     }
     return {
@@ -182,8 +183,8 @@ function useLastCard() {
     };
 }
 
-var css = "a {\r\n  text-decoration: none;\r\n}\r\n\r\n.Carousel_module_container__ed0ecad8 {\r\n  width: 100%;\r\n  height: min-content;\r\n  min-height: 18.3rem;\r\n  max-height: 26rem;\r\n  display: flex;\r\n  background: #fff;\r\n  overflow: hidden;\r\n  padding-bottom: 0.2rem\r\n}\r\n\r\n\r\n.Carousel_module_content__ed0ecad8 {\r\n  display: flex;\r\n  position: relative;\r\n  background: #fff;\r\n  gap: 1rem;\r\n}\r\n\r\n.Carousel_module_carouselButton__ed0ecad8 {\r\n  width: 2.4rem;\r\n  height: 2.4rem;\r\n  border-radius: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  z-index: 20;\r\n  position: absolute;\r\n  top: 9rem;\r\n  border: 0;\r\n  background: rgba(0,0,0,.5);\r\n  opacity: 1;\r\n}\r\n\r\n.Carousel_module_previousButton__ed0ecad8 {\r\n  position: absolute;\r\n  left: 0.5rem;\r\n}\r\n\r\n.Carousel_module_nextButton__ed0ecad8 {\r\n  margin-left: 85%;\r\n}\r\n\r\n.Carousel_module_iconButton__ed0ecad8 > polyline {\r\n  stroke: #fff;\r\n}\r\n\r\n\r\n@media (min-width: 482px) {\r\n  .Carousel_module_nextButton__ed0ecad8 {\r\n    margin-left: 87%;\r\n  } \r\n}\r\n\r\n@media (min-width: 582px) {\r\n  .Carousel_module_nextButton__ed0ecad8 {\r\n    margin-left: 89%;\r\n  } \r\n}\r\n\r\n@media (min-width: 643px) {\r\n  .Carousel_module_nextButton__ed0ecad8 {\r\n    margin-left: 90%;\r\n  } \r\n}\r\n\r\n@media (min-width: 763px) {\r\n  .Carousel_module_nextButton__ed0ecad8 {\r\n    margin-left: 92%;\r\n  } \r\n}\r\n\r\n@media (min-width: 933px) {\r\n  .Carousel_module_nextButton__ed0ecad8 {\r\n    margin-left: 93%;\r\n  } \r\n}\r\n\r\n@media (min-width: 1007px) {\r\n  .Carousel_module_nextButton__ed0ecad8 {\r\n    margin-left: 94%;\r\n  } \r\n}\r\n\r\n@media (min-width: 1289px) {\r\n  .Carousel_module_nextButton__ed0ecad8 {\r\n    margin-left: 95%;\r\n  } \r\n}";
-var modules_d1f32e6e = {"container":"Carousel_module_container__ed0ecad8","content":"Carousel_module_content__ed0ecad8","carouselButton":"Carousel_module_carouselButton__ed0ecad8","previousButton":"Carousel_module_previousButton__ed0ecad8","nextButton":"Carousel_module_nextButton__ed0ecad8","iconButton":"Carousel_module_iconButton__ed0ecad8"};
+var css = "a {\r\n  text-decoration: none;\r\n}\r\n\r\n.Carousel_module_container__00d20a78 {\r\n  width: 100%;\r\n  height: min-content;\r\n  min-height: 18.3rem;\r\n  max-height: 26rem;\r\n  display: flex;\r\n  background: #fff;\r\n  overflow: hidden;\r\n  padding-bottom: 0.2rem\r\n}\r\n\r\n\r\n.Carousel_module_content__00d20a78 {\r\n  display: flex;\r\n  position: relative;\r\n  background: #fff;\r\n  gap: 1rem;\r\n}\r\n\r\n.Carousel_module_carouselButton__00d20a78 {\r\n  width: 2.4rem;\r\n  height: 2.4rem;\r\n  border-radius: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  z-index: 20;\r\n  position: absolute;\r\n  top: 9rem;\r\n  border: 0;\r\n  background: rgba(0,0,0,.5);\r\n  opacity: 1;\r\n}\r\n\r\n.Carousel_module_previousButton__00d20a78 {\r\n  margin-left: 0.5%;\r\n}\r\n\r\n.Carousel_module_nextButton__00d20a78 {\r\n  margin-left: 85%;\r\n}\r\n\r\n.Carousel_module_iconButton__00d20a78 > polyline {\r\n  stroke: #fff;\r\n}\r\n\r\n\r\n@media (min-width: 482px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 87%;\r\n  } \r\n}\r\n\r\n@media (min-width: 582px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 89%;\r\n  } \r\n}\r\n\r\n@media (min-width: 643px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 90%;\r\n  } \r\n}\r\n\r\n@media (min-width: 763px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 92%;\r\n  } \r\n}\r\n\r\n@media (min-width: 933px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 93%;\r\n  } \r\n}\r\n\r\n@media (min-width: 1007px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 94%;\r\n  } \r\n}\r\n\r\n@media (min-width: 1289px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 95%;\r\n  } \r\n}";
+var modules_d1f32e6e = {"container":"Carousel_module_container__00d20a78","content":"Carousel_module_content__00d20a78","carouselButton":"Carousel_module_carouselButton__00d20a78","previousButton":"Carousel_module_previousButton__00d20a78","nextButton":"Carousel_module_nextButton__00d20a78","iconButton":"Carousel_module_iconButton__00d20a78"};
 n(css,{});
 
 function Carousel(_a) {
@@ -196,7 +197,7 @@ function Carousel(_a) {
     var carouselContainer = useRef();
     var cardIsVisible = useIsVisible(carouselContainer, cardContainer);
     var returnLastCard = useLastCard().returnLastCard;
-    return (jsxs("div", __assign({ className: modules_d1f32e6e.container, ref: carouselContainer }, { children: [(position > 0) && (jsx("button", __assign({ onClick: function () { return moveBack(); }, className: classnames(modules_d1f32e6e.carouselButton, modules_d1f32e6e.previousButton) }, { children: jsx(GrFormPrevious, { className: modules_d1f32e6e.iconButton, size: 24 }) }))), jsx("span", __assign({ className: modules_d1f32e6e.content, style: { right: "".concat(position, "rem"), transition: 'right 0.6s linear' } }, { children: dataMedium.map(function (item, index) { return (jsx("a", __assign({ href: item.link, ref: returnLastCard(index, dataMedium, cardContainer), target: nameTarget }, { children: jsx(Card, { userdata: item, options: options }) }), index)); }) })), (!cardIsVisible) && (jsx("button", __assign({ onClick: function () { return moveForward(cardIsVisible); }, className: classnames(modules_d1f32e6e.carouselButton, modules_d1f32e6e.nextButton) }, { children: jsx(GrFormNext, { className: modules_d1f32e6e.iconButton, size: 24 }) })))] })));
+    return (jsxs("div", __assign({ className: modules_d1f32e6e.container, ref: carouselContainer }, { children: [(position > 0) && (jsx("button", __assign({ onClick: function () { return moveBack(); }, className: classnames(modules_d1f32e6e.carouselButton, modules_d1f32e6e.previousButton) }, { children: jsx(GrFormPrevious, { className: modules_d1f32e6e.iconButton, size: 24 }) }))), jsx("span", __assign({ className: modules_d1f32e6e.content, style: { right: "".concat(position, "rem"), transition: 'right 0.6s linear' } }, { children: dataMedium.map(function (item, index) { return (jsx("a", __assign({ href: item.link, ref: returnLastCard(index, dataMedium, cardContainer), target: nameTarget, "data-testid": "card-".concat(index) }, { children: jsx(Card, { userdata: item, options: options }) }), index)); }) })), (!cardIsVisible) && (jsx("button", __assign({ onClick: function () { return moveForward(cardIsVisible); }, className: classnames(modules_d1f32e6e.carouselButton, modules_d1f32e6e.nextButton) }, { children: jsx(GrFormNext, { className: modules_d1f32e6e.iconButton, size: 24 }) })))] })));
 }
 
 export { Carousel as default };
