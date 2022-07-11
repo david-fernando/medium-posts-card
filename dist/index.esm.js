@@ -1,8 +1,8 @@
 import { jsxs, jsx } from 'react/jsx-runtime';
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import classnames from 'classnames';
 import { GrFormPrevious, GrFormNext } from 'react-icons/gr';
-import useFetch from 'use-http';
+import axios from 'axios';
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -105,7 +105,12 @@ var isBrowser = typeof document !== 'undefined';
 function useSSREffect(callback, dependecies) {
     var dependecie = [];
     if (dependecie[0] !== dependecies[0]) {
-        callback();
+        try {
+            callback();
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
     dependecie[0] = dependecies[0];
 }
@@ -162,29 +167,28 @@ var mockMedium = {
 function useGetMedium(username) {
     var _this = this;
     var _a = useState([]), dataMedium = _a[0], setDataMedium = _a[1];
+    var array = useArray().array;
     var environment = process.env.NODE_ENV;
     var isItaTestEnvironment = environment === 'test';
     var urlBase = 'https://mediumpostapi.herokuapp.com';
-    var fetchOptions = { cachePolicy: "no-cache" };
-    var get = useFetch("".concat(urlBase, "/?usermedium=").concat(username), fetchOptions).get;
-    var getMedium = useCallback(function () { return __awaiter(_this, void 0, void 0, function () {
-        var data;
+    var getMedium = function () { return __awaiter(_this, void 0, void 0, function () {
+        var response, data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0:
-                    if (isItaTestEnvironment) {
-                        setDataMedium(mockMedium.data.dataMedium);
-                        return [2 /*return*/];
-                    }
-                    return [4 /*yield*/, get("")];
+                case 0: return [4 /*yield*/, axios.get("".concat(urlBase, "/?usermedium=").concat(username))];
                 case 1:
-                    data = _a.sent();
-                    setDataMedium(data.dataMedium);
+                    response = _a.sent();
+                    data = response.data.dataMedium;
+                    setDataMedium(data);
                     return [2 /*return*/];
             }
         });
-    }); }, [get]);
+    }); };
     useIsomophicEffect(function () {
+        if (isItaTestEnvironment && array(dataMedium).isEmpty) {
+            setDataMedium(mockMedium.data.dataMedium);
+            return;
+        }
         getMedium();
     }, [getMedium]);
     return {
@@ -262,7 +266,7 @@ function Carousel(_a) {
     var carouselContainer = useRef();
     var cardIsVisible = useIsVisible(carouselContainer, cardContainer);
     var returnLastCard = useLastCard().returnLastCard;
-    return (jsxs("div", __assign({ className: modules_d1f32e6e.container, ref: carouselContainer }, { children: [(position > 0) && (jsx("button", __assign({ onClick: function () { return moveBack(); }, className: classnames(modules_d1f32e6e.carouselButton, modules_d1f32e6e.previousButton) }, { children: jsx(GrFormPrevious, { className: modules_d1f32e6e.iconButton, size: 24 }) }))), jsx("span", __assign({ className: modules_d1f32e6e.content, style: { right: "".concat(position, "rem"), transition: 'right 0.6s linear' } }, { children: dataMedium.map(function (item, index) { return (jsx("a", __assign({ href: item.link, ref: returnLastCard(index, dataMedium, cardContainer), target: nameTarget, "data-testid": "card-".concat(index) }, { children: jsx(Card, { userdata: item, options: options }) }), index)); }) })), (!cardIsVisible) && (jsx("button", __assign({ onClick: function () { return moveForward(cardIsVisible); }, className: classnames(modules_d1f32e6e.carouselButton, modules_d1f32e6e.nextButton) }, { children: jsx(GrFormNext, { className: modules_d1f32e6e.iconButton, size: 24 }) })))] })));
+    return (jsxs("div", __assign({ className: modules_d1f32e6e.container, ref: carouselContainer }, { children: [(position > 0) && (jsx("button", __assign({ onClick: function () { return moveBack(); }, className: classnames(modules_d1f32e6e.carouselButton, modules_d1f32e6e.previousButton) }, { children: jsx(GrFormPrevious, { className: modules_d1f32e6e.iconButton, size: 24 }) }))), jsx("span", __assign({ className: modules_d1f32e6e.content, style: { right: "".concat(position, "rem"), transition: 'right 0.6s linear' } }, { children: dataMedium.map(function (item, index) { return (jsx("a", __assign({ href: item.link, ref: returnLastCard(index, dataMedium, cardContainer), target: nameTarget }, { children: jsx(Card, { userdata: item, options: options }) }), index)); }) })), (!cardIsVisible) && (jsx("button", __assign({ onClick: function () { return moveForward(cardIsVisible); }, className: classnames(modules_d1f32e6e.carouselButton, modules_d1f32e6e.nextButton) }, { children: jsx(GrFormNext, { className: modules_d1f32e6e.iconButton, size: 24 }) })))] })));
 }
 
 export { Carousel as default };
