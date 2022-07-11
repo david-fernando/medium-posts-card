@@ -32,7 +32,6 @@
     "build-storybook": "build-storybook",
     "build-test": "npx tsc --jsx preserve -t es2020 --outDir build-test --noEmit false",
     "test": "jest ./src/tests --detectOpenHandles",
-    "yarn-duplicate": "yarn-deduplicate yarn.lock --packages @types/react yarn.lock",
     "build-and-test": "yarn build-test && yarn test"
   },
   "eslintConfig": {
