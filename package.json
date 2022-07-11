@@ -27,7 +27,6 @@
     "build": "rollup -c",
     "build-watch": "rollup -c -w",
     "start-playground": "cd playground && yarn start",
-    "start-playground-next": "cd playground-next && yarn dev",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build-test": "npx tsc --jsx preserve -t es2020 --outDir build-test --noEmit false",
