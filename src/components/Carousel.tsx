@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { GrFormPrevious, GrFormNext } from 'react-icons/gr'
 import { Props } from '../interface/interface'
 import Card from './Card'
-import useFetch from '../hooks/useFetch';
+import useGetMedium from '../hooks/useGetMedium';
 import useCarousel from '../hooks/useCarousel';
 import useIsVisible from '../hooks/useIsVisible';
 import useLastCard from '../hooks/useLastCard';
@@ -12,8 +12,7 @@ import styles from '../style/Carousel.module.css'
 
 function Carousel({ username, options = {} }: Props){
   const { moveForward, moveBack, position } = useCarousel()
-
-  const { dataMedium } = useFetch(`https://mediumpostapi.herokuapp.com/?usermedium=${username}`)
+  const { dataMedium } = useGetMedium(username)
   const openInNewTab = (options.hasOwnProperty('openInNewTab'))? options.openInNewTab : true
   const nameTarget = (openInNewTab)? '_blank' : '_self'
   const cardContainer:any = useRef()
@@ -31,13 +30,13 @@ function Carousel({ username, options = {} }: Props){
         )
       }
       <span className={styles.content} style={{right: `${position}rem`, transition: 'right 0.6s linear' }} >
-        {
-          dataMedium.map((item: any, index: number) => (
-            <a href={item.link} ref={returnLastCard(index, dataMedium, cardContainer)} target={nameTarget} key={index} >
-              <Card userdata={item} options={options} />
-            </a>
-          ))
-        }
+          {
+            dataMedium.map((item: any, index: number) => (
+              <a href={item.link} ref={returnLastCard(index, dataMedium, cardContainer)} target={nameTarget} key={index} data-testid={`card-${index}`}>
+                <Card userdata={item} options={options} />
+              </a>
+            ))
+          }
       </span>
       {
         (!cardIsVisible) && (
