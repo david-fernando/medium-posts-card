@@ -4,13 +4,12 @@ var jsxRuntime = require('react/jsx-runtime');
 var react = require('react');
 var classnames = require('classnames');
 var gr = require('react-icons/gr');
-var rooks = require('rooks');
-var axios = require('axios');
+var useFetch = require('use-http');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var classnames__default = /*#__PURE__*/_interopDefaultLegacy(classnames);
-var axios__default = /*#__PURE__*/_interopDefaultLegacy(axios);
+var useFetch__default = /*#__PURE__*/_interopDefaultLegacy(useFetch);
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -109,26 +108,92 @@ function Card(_a) {
     return (jsxRuntime.jsxs("div", __assign({ className: classnames__default["default"](modules_e5a68879.container, borderRadiusContainer) }, { children: [jsxRuntime.jsx("span", { children: jsxRuntime.jsx("img", { className: classnames__default["default"](modules_e5a68879.thumbnail, borderRadiusThumbnail), src: imageUrl, alt: userdata.title }) }), jsxRuntime.jsxs("span", __assign({ className: modules_e5a68879.content }, { children: [jsxRuntime.jsx("span", __assign({ className: modules_e5a68879.title }, { children: userdata.title })), jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.description }, { children: userdata.description })), (options.showDate) && (jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.date }, { children: userdata.date }))), (options.showTags) && (jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.tags }, { children: tagsWithBlankSpace })))] }))] })));
 }
 
-function useFetch(url) {
+var isBrowser = typeof document !== 'undefined';
+function useSSREffect(callback, dependecies) {
+    var dependecie = [];
+    if (dependecie[0] !== dependecies[0]) {
+        callback();
+    }
+    dependecie[0] = dependecies[0];
+}
+var useIsomophicEffect = isBrowser ? react.useEffect : useSSREffect;
+
+var mockMedium = {
+    'data': {
+        'dataMedium': [
+            {
+                title: "Como fazer dark theme com JavaScript puro",
+                date: "2021-03-07",
+                link: "https://medium.com/david-fernando/como-dark-theme-com-javascript-puro-fc277377447c?source=rss-e1120fb0abef------2",
+                image: "https://cdn-images-1.medium.com/max/1024/1*pUi3vkj06Vqp_sXeiI-UbQ.jpeg",
+                description: "Um pequeno tutorial de como fazer dark theme com HTML, CSS e JavaScript puro.",
+                tags: [
+                    "dark-mode",
+                    "js-tutorial",
+                    "javascript",
+                    "tutorial"
+                ]
+            },
+            {
+                title: "Como reduzir a quantidade de IFs",
+                date: "2020-09-25",
+                link: "https://medium.com/david-fernando/como-reduzir-a-quantidade-de-ifs-4484fc728397?source=rss-e1120fb0abef------2",
+                image: "https://cdn-images-1.medium.com/max/1024/1*6wlQhci1Pot4BWUPDpHbfw.jpeg",
+                description: "Uma introdução ao design pattern Strategy com JavaScript",
+                tags: [
+                    "strategy-design-pattern",
+                    "ecmascript",
+                    "javascript",
+                    "design-patterns",
+                    "ecmascript-6"
+                ]
+            },
+            {
+                title: "Por que usar TypeScript?",
+                date: "2020-09-24",
+                link: "https://medium.com/david-fernando/por-que-usar-typescript-ca15607eed33?source=rss-e1120fb0abef------2",
+                image: "https://cdn-images-1.medium.com/max/1024/1*ODf4X51nKEMElimXA706gQ.jpeg",
+                description: "Veja quais são os benefícios de utiliza-lo em seus projetos",
+                tags: [
+                    "ecmascript-2020",
+                    "typescript",
+                    "ecmascript-6",
+                    "javascript",
+                    "ecmascript"
+                ]
+            }
+        ]
+    }
+};
+
+function useGetMedium(username) {
+    var _this = this;
     var _a = react.useState([]), dataMedium = _a[0], setDataMedium = _a[1];
-    rooks.useIsomorphicEffect(function () {
-        function fetchData() {
-            return __awaiter(this, void 0, void 0, function () {
-                var response, data;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios__default["default"].get(url)];
-                        case 1:
-                            response = _a.sent();
-                            data = response.data.dataMedium;
-                            setDataMedium(data);
-                            return [2 /*return*/];
+    var environment = process.env.NODE_ENV;
+    var isItaTestEnvironment = environment === 'test';
+    var urlBase = 'https://mediumpostapi.herokuapp.com';
+    var fetchOptions = { cachePolicy: "no-cache" };
+    var get = useFetch__default["default"]("".concat(urlBase, "/?usermedium=").concat(username), fetchOptions).get;
+    var getMedium = react.useCallback(function () { return __awaiter(_this, void 0, void 0, function () {
+        var data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (isItaTestEnvironment) {
+                        setDataMedium(mockMedium.data.dataMedium);
+                        return [2 /*return*/];
                     }
-                });
-            });
-        }
-        fetchData();
-    }, [url]);
+                    return [4 /*yield*/, get("")];
+                case 1:
+                    data = _a.sent();
+                    setDataMedium(data.dataMedium);
+                    return [2 /*return*/];
+            }
+        });
+    }); }, [get]);
+    useIsomophicEffect(function () {
+        getMedium();
+    }, [getMedium]);
     return {
         dataMedium: dataMedium
     };
@@ -197,7 +262,7 @@ n(css,{});
 function Carousel(_a) {
     var username = _a.username, _b = _a.options, options = _b === void 0 ? {} : _b;
     var _c = useCarousel(), moveForward = _c.moveForward, moveBack = _c.moveBack, position = _c.position;
-    var dataMedium = useFetch("https://mediumpostapi.herokuapp.com/?usermedium=".concat(username)).dataMedium;
+    var dataMedium = useGetMedium(username).dataMedium;
     var openInNewTab = (options.hasOwnProperty('openInNewTab')) ? options.openInNewTab : true;
     var nameTarget = (openInNewTab) ? '_blank' : '_self';
     var cardContainer = react.useRef();
