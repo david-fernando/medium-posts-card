@@ -17,6 +17,8 @@
     "build",
     "dist",
     "src/stories/**/*",
-    ".storybook"
+    "src/tests/**/*",
+    "src/mocks/server.tsx",
+    ".storybook",
   ]
 }
