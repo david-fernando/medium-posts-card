@@ -32,7 +32,7 @@ function Carousel({ username, options = {} }: Props){
       <span className={styles.content} style={{right: `${position}rem`, transition: 'right 0.6s linear' }} >
           {
             dataMedium.map((item: any, index: number) => (
-              <a href={item.link} ref={returnLastCard(index, dataMedium, cardContainer)} target={nameTarget} key={index} data-testid={`card-${index}`}>
+              <a href={item.link} ref={returnLastCard(index, dataMedium, cardContainer)} target={nameTarget} key={index} >
                 <Card userdata={item} options={options} />
               </a>
             ))
