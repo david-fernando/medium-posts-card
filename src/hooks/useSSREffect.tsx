@@ -1,13 +1,13 @@
 function useSSREffect(callback: () => any, dependecies: Array<any>){
-  let dependecie = []
-  if(dependecie[0] !== dependecies[0]){
-    try{
-      callback()
-    }catch(error){
-      console.log(error)
-    }
+  const isServer = typeof document === 'undefined'
+  if(!isServer){
+    return;
   }
-  dependecie[0] = dependecies[0]
+  try{
+    callback()
+  }catch(error){
+    console.log(error)
+  }
 }
 
 export default useSSREffect
