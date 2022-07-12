@@ -8,7 +8,7 @@ import Carousel from '../../build-test/components/Carousel'
 const handlers = [
   rest.get('http://localhost:3333/carousel', (request, response, context)=>{
 
-    const component = renderToString(<Carousel username='davidfernandodamata21' />)
+    const component = renderToString(<Carousel username='davidfernandodamata21' options={{ssr: true}} />)
 
     const html = `<!DOCTYPE html>
     <html lang="en">
