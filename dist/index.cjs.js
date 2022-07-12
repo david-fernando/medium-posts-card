@@ -109,16 +109,16 @@ function Card(_a) {
 }
 
 function useSSREffect(callback, dependecies) {
-    var dependecie = [];
-    if (dependecie[0] !== dependecies[0]) {
-        try {
-            callback();
-        }
-        catch (error) {
-            console.log(error);
-        }
+    var isServer = typeof document === 'undefined';
+    if (!isServer) {
+        return;
     }
-    dependecie[0] = dependecies[0];
+    try {
+        callback();
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 var mockMedium = {
@@ -191,7 +191,10 @@ function useGetMedium(username, ssr) {
         });
     }); };
     useIsomorphicEffect(function () {
-        if (isItaTestEnvironment && array(dataMedium).isEmpty) {
+        if (!array(dataMedium).isEmpty) {
+            return;
+        }
+        if (isItaTestEnvironment) {
             setDataMedium(mockMedium.data.dataMedium);
             return;
         }
