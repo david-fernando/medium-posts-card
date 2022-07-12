@@ -3,7 +3,8 @@ interface Options {
     borderRadius?: boolean,
     showTags?: boolean,
     showDate?: boolean,
-    openInNewTab?: boolean
+    openInNewTab?: boolean,
+    ssr?: boolean
   }
 }
 
