@@ -108,7 +108,6 @@ function Card(_a) {
     return (jsxRuntime.jsxs("div", __assign({ className: classnames__default["default"](modules_e5a68879.container, borderRadiusContainer) }, { children: [jsxRuntime.jsx("span", { children: jsxRuntime.jsx("img", { className: classnames__default["default"](modules_e5a68879.thumbnail, borderRadiusThumbnail), src: imageUrl, alt: userdata.title }) }), jsxRuntime.jsxs("span", __assign({ className: modules_e5a68879.content }, { children: [jsxRuntime.jsx("span", __assign({ className: modules_e5a68879.title }, { children: userdata.title })), jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.description }, { children: userdata.description })), (options.showDate) && (jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.date }, { children: userdata.date }))), (options.showTags) && (jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.tags }, { children: tagsWithBlankSpace })))] }))] })));
 }
 
-var isBrowser = typeof document !== 'undefined';
 function useSSREffect(callback, dependecies) {
     var dependecie = [];
     if (dependecie[0] !== dependecies[0]) {
@@ -121,7 +120,6 @@ function useSSREffect(callback, dependecies) {
     }
     dependecie[0] = dependecies[0];
 }
-var useIsomophicEffect = isBrowser ? react.useEffect : useSSREffect;
 
 var mockMedium = {
     'data': {
@@ -171,13 +169,14 @@ var mockMedium = {
     }
 };
 
-function useGetMedium(username) {
+function useGetMedium(username, ssr) {
     var _this = this;
     var _a = react.useState([]), dataMedium = _a[0], setDataMedium = _a[1];
     var array = useArray().array;
     var environment = process.env.NODE_ENV;
     var isItaTestEnvironment = environment === 'test';
     var urlBase = 'https://mediumpostapi.herokuapp.com';
+    var useIsomorphicEffect = (ssr) ? useSSREffect : react.useEffect;
     var getMedium = function () { return __awaiter(_this, void 0, void 0, function () {
         var response, data;
         return __generator(this, function (_a) {
@@ -191,7 +190,7 @@ function useGetMedium(username) {
             }
         });
     }); };
-    useIsomophicEffect(function () {
+    useIsomorphicEffect(function () {
         if (isItaTestEnvironment && array(dataMedium).isEmpty) {
             setDataMedium(mockMedium.data.dataMedium);
             return;
@@ -265,8 +264,9 @@ n(css,{});
 
 function Carousel(_a) {
     var username = _a.username, _b = _a.options, options = _b === void 0 ? {} : _b;
+    var ssr = (options === null || options === void 0 ? void 0 : options.ssr) || false;
     var _c = useCarousel(), moveForward = _c.moveForward, moveBack = _c.moveBack, position = _c.position;
-    var dataMedium = useGetMedium(username).dataMedium;
+    var dataMedium = useGetMedium(username, ssr).dataMedium;
     var openInNewTab = (options.hasOwnProperty('openInNewTab')) ? options.openInNewTab : true;
     var nameTarget = (openInNewTab) ? '_blank' : '_self';
     var cardContainer = react.useRef();
