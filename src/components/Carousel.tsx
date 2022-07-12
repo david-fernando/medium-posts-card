@@ -11,8 +11,9 @@ import useLastCard from '../hooks/useLastCard';
 import styles from '../style/Carousel.module.css'
 
 function Carousel({ username, options = {} }: Props){
+  const ssr = options?.ssr || false
   const { moveForward, moveBack, position } = useCarousel()
-  const { dataMedium } = useGetMedium(username)
+  const { dataMedium } = useGetMedium(username, ssr)
   const openInNewTab = (options.hasOwnProperty('openInNewTab'))? options.openInNewTab : true
   const nameTarget = (openInNewTab)? '_blank' : '_self'
   const cardContainer:any = useRef()
