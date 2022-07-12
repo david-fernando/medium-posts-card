@@ -19,8 +19,11 @@ function useGetMedium(username: string, ssr: boolean){
   }
 
   useIsomorphicEffect(() => {
-    if(isItaTestEnvironment && array(dataMedium).isEmpty ){
-        setDataMedium(mockMedium.data.dataMedium)
+    if(!array(dataMedium).isEmpty){
+      return;
+    }
+    if(isItaTestEnvironment){
+      setDataMedium(mockMedium.data.dataMedium)
       return;
     }
     getMedium();
