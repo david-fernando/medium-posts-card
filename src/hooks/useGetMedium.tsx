@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios'
-import useSSREffect from './useSSREffect';
 import useArray from './useArray';
 import mockMedium from '../mocks/dataMedium';
 
@@ -10,20 +9,26 @@ function useGetMedium(username: string, ssr: boolean){
   const environment = process.env.NODE_ENV
   const isItaTestEnvironment = environment === 'test'
   const urlBase = 'https://mediumpostapi.herokuapp.com'
-  const useIsomorphicEffect = (ssr)? useSSREffect : useEffect
 
   const getMedium = async () => {
-    const response = await axios.get(`${urlBase}/?usermedium=${username}`);
-    const data = response.data.dataMedium
-    setDataMedium(data);
-  }
-
-  useIsomorphicEffect(() => {
     if(!array(dataMedium).isEmpty){
       return;
     }
     if(isItaTestEnvironment){
       setDataMedium(mockMedium.data.dataMedium)
+      return;
+    }
+    const response = await axios.get(`${urlBase}/?usermedium=${username}`);
+    const data = response.data.dataMedium
+    setDataMedium(data);
+  }
+
+  if(ssr){
+    getMedium()
+  }
+
+  useEffect(() => {
+    if(ssr){
       return;
     }
     getMedium();
