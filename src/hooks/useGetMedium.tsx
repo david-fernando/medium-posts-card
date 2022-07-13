@@ -24,7 +24,7 @@ function useGetMedium(username: string, ssr: boolean){
   }
 
   if(ssr){
-    getMedium()
+    (async()=> await getMedium())()
   }
 
   useEffect(() => {
