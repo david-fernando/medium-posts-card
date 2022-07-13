@@ -108,19 +108,6 @@ function Card(_a) {
     return (jsxRuntime.jsxs("div", __assign({ className: classnames__default["default"](modules_e5a68879.container, borderRadiusContainer) }, { children: [jsxRuntime.jsx("span", { children: jsxRuntime.jsx("img", { className: classnames__default["default"](modules_e5a68879.thumbnail, borderRadiusThumbnail), src: imageUrl, alt: userdata.title }) }), jsxRuntime.jsxs("span", __assign({ className: modules_e5a68879.content }, { children: [jsxRuntime.jsx("span", __assign({ className: modules_e5a68879.title }, { children: userdata.title })), jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.description }, { children: userdata.description })), (options.showDate) && (jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.date }, { children: userdata.date }))), (options.showTags) && (jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.tags }, { children: tagsWithBlankSpace })))] }))] })));
 }
 
-function useSSREffect(callback, dependecies) {
-    var isServer = typeof document === 'undefined';
-    if (!isServer) {
-        return;
-    }
-    try {
-        callback();
-    }
-    catch (error) {
-        console.log(error);
-    }
-}
-
 var mockMedium = {
     'data': {
         'dataMedium': [
@@ -176,12 +163,19 @@ function useGetMedium(username, ssr) {
     var environment = process.env.NODE_ENV;
     var isItaTestEnvironment = environment === 'test';
     var urlBase = 'https://mediumpostapi.herokuapp.com';
-    var useIsomorphicEffect = (ssr) ? useSSREffect : react.useEffect;
     var getMedium = function () { return __awaiter(_this, void 0, void 0, function () {
         var response, data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, axios__default["default"].get("".concat(urlBase, "/?usermedium=").concat(username))];
+                case 0:
+                    if (!array(dataMedium).isEmpty) {
+                        return [2 /*return*/];
+                    }
+                    if (isItaTestEnvironment) {
+                        setDataMedium(mockMedium.data.dataMedium);
+                        return [2 /*return*/];
+                    }
+                    return [4 /*yield*/, axios__default["default"].get("".concat(urlBase, "/?usermedium=").concat(username))];
                 case 1:
                     response = _a.sent();
                     data = response.data.dataMedium;
@@ -190,12 +184,11 @@ function useGetMedium(username, ssr) {
             }
         });
     }); };
-    useIsomorphicEffect(function () {
-        if (!array(dataMedium).isEmpty) {
-            return;
-        }
-        if (isItaTestEnvironment) {
-            setDataMedium(mockMedium.data.dataMedium);
+    if (ssr) {
+        getMedium();
+    }
+    react.useEffect(function () {
+        if (ssr) {
             return;
         }
         getMedium();
