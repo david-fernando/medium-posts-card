@@ -1,3 +1,7 @@
 import Carousel from "./components/Carousel";
+import fetchMedium from './utils/fetchMedium';
 
-export default Carousel
+export {
+  Carousel,
+  fetchMedium
+}
