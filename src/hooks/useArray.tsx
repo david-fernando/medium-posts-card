@@ -1,5 +1,5 @@
 function useArray(){
-  function array(array: any[]){
+  function array(array: any[] = []){
     const isEmpty = (array.length === 0)? true : false
 
     return {
