@@ -7,22 +7,26 @@ import useGetMedium from '../hooks/useGetMedium';
 import useCarousel from '../hooks/useCarousel';
 import useIsVisible from '../hooks/useIsVisible';
 import useLastCard from '../hooks/useLastCard';
+import useArray from '../hooks/useArray';
 
 import styles from '../style/Carousel.module.css'
 
-function Carousel({ username, options = {} }: Props){
+function Carousel({ username = '', dataMedium, options = {} }: Props){
   const ssr = options?.ssr || false
+  const { array } = useArray()
+  const data = useGetMedium(username, ssr)
+  const medium = (array(data).isEmpty)? dataMedium?.dataMedium : data
   const { moveForward, moveBack, position } = useCarousel()
-  const { dataMedium } = useGetMedium(username, ssr)
   const openInNewTab = (options.hasOwnProperty('openInNewTab'))? options.openInNewTab : true
   const nameTarget = (openInNewTab)? '_blank' : '_self'
   const cardContainer:any = useRef()
   const carouselContainer:any = useRef()
   const cardIsVisible:boolean = useIsVisible(carouselContainer, cardContainer)
   const { returnLastCard } = useLastCard()
+  
 
   return (
-    <div className={styles.container} ref={carouselContainer} >
+      <div className={styles.container} ref={carouselContainer} >
       {
         (position > 0) && (
           <button onClick={() => moveBack()} className={classnames(styles.carouselButton, styles.previousButton)} >
@@ -32,8 +36,8 @@ function Carousel({ username, options = {} }: Props){
       }
       <span className={styles.content} style={{right: `${position}rem`, transition: 'right 0.6s linear' }} >
           {
-            dataMedium.map((item: any, index: number) => (
-              <a href={item.link} ref={returnLastCard(index, dataMedium, cardContainer)} target={nameTarget} key={index} >
+            medium.map((item: any, index: number) => (
+              <a href={item.link} ref={returnLastCard(index, medium, cardContainer)} target={nameTarget} key={index} >
                 <Card userdata={item} options={options} />
               </a>
             ))
