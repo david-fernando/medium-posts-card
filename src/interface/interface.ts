@@ -43,6 +43,5 @@ export {
   Props,
   Options,
   User,
-  CardProps,
-  ServerSideProps
+  CardProps
 }
