@@ -220,11 +220,12 @@ function Carousel(_a) {
 var axios = require('axios');
 function fetchMedium(username) {
     return __awaiter(this, void 0, void 0, function () {
-        var data, baseUrl, response;
+        var isBrowser, baseUrl, response, data;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (data) {
+                    isBrowser = typeof window !== 'undefined';
+                    if (isBrowser) {
                         return [2 /*return*/];
                     }
                     baseUrl = 'https://mediumpostapi.herokuapp.com';
