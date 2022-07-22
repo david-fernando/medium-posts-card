@@ -1,15 +1,17 @@
 'use strict';
 
+Object.defineProperty(exports, '__esModule', { value: true });
+
 var jsxRuntime = require('react/jsx-runtime');
 var react = require('react');
 var classnames = require('classnames');
 var gr = require('react-icons/gr');
-var axios = require('axios');
+var axios$1 = require('axios');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var classnames__default = /*#__PURE__*/_interopDefaultLegacy(classnames);
-var axios__default = /*#__PURE__*/_interopDefaultLegacy(axios);
+var axios__default = /*#__PURE__*/_interopDefaultLegacy(axios$1);
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -77,6 +79,7 @@ function __generator(thisArg, body) {
 
 function useArray() {
     function array(array) {
+        if (array === void 0) { array = []; }
         var isEmpty = (array.length === 0) ? true : false;
         return {
             isEmpty: isEmpty
@@ -108,99 +111,33 @@ function Card(_a) {
     return (jsxRuntime.jsxs("div", __assign({ className: classnames__default["default"](modules_e5a68879.container, borderRadiusContainer) }, { children: [jsxRuntime.jsx("span", { children: jsxRuntime.jsx("img", { className: classnames__default["default"](modules_e5a68879.thumbnail, borderRadiusThumbnail), src: imageUrl, alt: userdata.title }) }), jsxRuntime.jsxs("span", __assign({ className: modules_e5a68879.content }, { children: [jsxRuntime.jsx("span", __assign({ className: modules_e5a68879.title }, { children: userdata.title })), jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.description }, { children: userdata.description })), (options.showDate) && (jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.date }, { children: userdata.date }))), (options.showTags) && (jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.tags }, { children: tagsWithBlankSpace })))] }))] })));
 }
 
-var mockMedium = {
-    'data': {
-        'dataMedium': [
-            {
-                title: "Como fazer dark theme com JavaScript puro",
-                date: "2021-03-07",
-                link: "https://medium.com/david-fernando/como-dark-theme-com-javascript-puro-fc277377447c?source=rss-e1120fb0abef------2",
-                image: "https://cdn-images-1.medium.com/max/1024/1*pUi3vkj06Vqp_sXeiI-UbQ.jpeg",
-                description: "Um pequeno tutorial de como fazer dark theme com HTML, CSS e JavaScript puro.",
-                tags: [
-                    "dark-mode",
-                    "js-tutorial",
-                    "javascript",
-                    "tutorial"
-                ]
-            },
-            {
-                title: "Como reduzir a quantidade de IFs",
-                date: "2020-09-25",
-                link: "https://medium.com/david-fernando/como-reduzir-a-quantidade-de-ifs-4484fc728397?source=rss-e1120fb0abef------2",
-                image: "https://cdn-images-1.medium.com/max/1024/1*6wlQhci1Pot4BWUPDpHbfw.jpeg",
-                description: "Uma introdução ao design pattern Strategy com JavaScript",
-                tags: [
-                    "strategy-design-pattern",
-                    "ecmascript",
-                    "javascript",
-                    "design-patterns",
-                    "ecmascript-6"
-                ]
-            },
-            {
-                title: "Por que usar TypeScript?",
-                date: "2020-09-24",
-                link: "https://medium.com/david-fernando/por-que-usar-typescript-ca15607eed33?source=rss-e1120fb0abef------2",
-                image: "https://cdn-images-1.medium.com/max/1024/1*ODf4X51nKEMElimXA706gQ.jpeg",
-                description: "Veja quais são os benefícios de utiliza-lo em seus projetos",
-                tags: [
-                    "ecmascript-2020",
-                    "typescript",
-                    "ecmascript-6",
-                    "javascript",
-                    "ecmascript"
-                ]
-            }
-        ]
-    }
-};
-
-function useGetMedium(username, ssr) {
-    var _this = this;
+function useGetMedium(username) {
     var _a = react.useState([]), dataMedium = _a[0], setDataMedium = _a[1];
     var array = useArray().array;
-    var environment = process.env.NODE_ENV;
-    var isItaTestEnvironment = environment === 'test';
-    var urlBase = 'https://mediumpostapi.herokuapp.com';
-    var getMedium = function () { return __awaiter(_this, void 0, void 0, function () {
-        var response, data;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!array(dataMedium).isEmpty) {
+    function fetchMedium() {
+        return __awaiter(this, void 0, void 0, function () {
+            var baseUrl, response, data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        baseUrl = 'https://mediumpostapi.herokuapp.com';
+                        return [4 /*yield*/, axios__default["default"].get("".concat(baseUrl, "/?usermedium=").concat(username))];
+                    case 1:
+                        response = _a.sent();
+                        data = response.data.dataMedium;
+                        setDataMedium(data);
                         return [2 /*return*/];
-                    }
-                    if (isItaTestEnvironment) {
-                        setDataMedium(mockMedium.data.dataMedium);
-                        return [2 /*return*/];
-                    }
-                    return [4 /*yield*/, axios__default["default"].get("".concat(urlBase, "/?usermedium=").concat(username))];
-                case 1:
-                    response = _a.sent();
-                    data = response.data.dataMedium;
-                    setDataMedium(data);
-                    return [2 /*return*/];
-            }
+                }
+            });
         });
-    }); };
-    if (ssr) {
-        (function () { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, getMedium()];
-                case 1: return [2 /*return*/, _a.sent()];
-            }
-        }); }); })();
     }
     react.useEffect(function () {
-        if (ssr) {
+        if (!array(dataMedium).isEmpty) {
             return;
         }
-        getMedium();
-    }, [getMedium]);
-    return {
-        dataMedium: dataMedium
-    };
+        fetchMedium();
+    }, [fetchMedium]);
+    return dataMedium;
 }
 
 function useCarousel() {
@@ -264,17 +201,39 @@ var modules_d1f32e6e = {"container":"Carousel_module_container__00d20a78","conte
 n(css,{});
 
 function Carousel(_a) {
-    var username = _a.username, _b = _a.options, options = _b === void 0 ? {} : _b;
-    var ssr = (options === null || options === void 0 ? void 0 : options.ssr) || false;
-    var _c = useCarousel(), moveForward = _c.moveForward, moveBack = _c.moveBack, position = _c.position;
-    var dataMedium = useGetMedium(username, ssr).dataMedium;
+    var _b = _a.username, username = _b === void 0 ? '' : _b, dataMedium = _a.dataMedium, _c = _a.options, options = _c === void 0 ? {} : _c;
+    // const ssr = options?.ssr || false
+    // const context = useContext(ServerSideContext)
+    var array = useArray().array;
+    var data = useGetMedium(username);
+    var medium = (array(data).isEmpty) ? dataMedium === null || dataMedium === void 0 ? void 0 : dataMedium.dataMedium : data;
+    var _d = useCarousel(), moveForward = _d.moveForward, moveBack = _d.moveBack, position = _d.position;
     var openInNewTab = (options.hasOwnProperty('openInNewTab')) ? options.openInNewTab : true;
     var nameTarget = (openInNewTab) ? '_blank' : '_self';
     var cardContainer = react.useRef();
     var carouselContainer = react.useRef();
     var cardIsVisible = useIsVisible(carouselContainer, cardContainer);
     var returnLastCard = useLastCard().returnLastCard;
-    return (jsxRuntime.jsxs("div", __assign({ className: modules_d1f32e6e.container, ref: carouselContainer }, { children: [(position > 0) && (jsxRuntime.jsx("button", __assign({ onClick: function () { return moveBack(); }, className: classnames__default["default"](modules_d1f32e6e.carouselButton, modules_d1f32e6e.previousButton) }, { children: jsxRuntime.jsx(gr.GrFormPrevious, { className: modules_d1f32e6e.iconButton, size: 24 }) }))), jsxRuntime.jsx("span", __assign({ className: modules_d1f32e6e.content, style: { right: "".concat(position, "rem"), transition: 'right 0.6s linear' } }, { children: dataMedium.map(function (item, index) { return (jsxRuntime.jsx("a", __assign({ href: item.link, ref: returnLastCard(index, dataMedium, cardContainer), target: nameTarget }, { children: jsxRuntime.jsx(Card, { userdata: item, options: options }) }), index)); }) })), (!cardIsVisible) && (jsxRuntime.jsx("button", __assign({ onClick: function () { return moveForward(cardIsVisible); }, className: classnames__default["default"](modules_d1f32e6e.carouselButton, modules_d1f32e6e.nextButton) }, { children: jsxRuntime.jsx(gr.GrFormNext, { className: modules_d1f32e6e.iconButton, size: 24 }) })))] })));
+    return (jsxRuntime.jsxs("div", __assign({ className: modules_d1f32e6e.container, ref: carouselContainer }, { children: [(position > 0) && (jsxRuntime.jsx("button", __assign({ onClick: function () { return moveBack(); }, className: classnames__default["default"](modules_d1f32e6e.carouselButton, modules_d1f32e6e.previousButton) }, { children: jsxRuntime.jsx(gr.GrFormPrevious, { className: modules_d1f32e6e.iconButton, size: 24 }) }))), jsxRuntime.jsx("span", __assign({ className: modules_d1f32e6e.content, style: { right: "".concat(position, "rem"), transition: 'right 0.6s linear' } }, { children: medium.map(function (item, index) { return (jsxRuntime.jsx("a", __assign({ href: item.link, ref: returnLastCard(index, medium, cardContainer), target: nameTarget }, { children: jsxRuntime.jsx(Card, { userdata: item, options: options }) }), index)); }) })), (!cardIsVisible) && (jsxRuntime.jsx("button", __assign({ onClick: function () { return moveForward(cardIsVisible); }, className: classnames__default["default"](modules_d1f32e6e.carouselButton, modules_d1f32e6e.nextButton) }, { children: jsxRuntime.jsx(gr.GrFormNext, { className: modules_d1f32e6e.iconButton, size: 24 }) })))] })));
 }
 
-module.exports = Carousel;
+var axios = require('axios');
+function fetchMedium(username) {
+    return __awaiter(this, void 0, void 0, function () {
+        var baseUrl, response, data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    baseUrl = 'https://mediumpostapi.herokuapp.com';
+                    return [4 /*yield*/, axios.get("".concat(baseUrl, "/?usermedium=").concat(username))];
+                case 1:
+                    response = _a.sent();
+                    data = response.data;
+                    return [2 /*return*/, data];
+            }
+        });
+    });
+}
+
+exports.Carousel = Carousel;
+exports.fetchMedium = fetchMedium;
