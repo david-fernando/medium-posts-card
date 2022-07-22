@@ -19,8 +19,9 @@
     "react-dom": "18.1.0",
     "react-icons": "^4.4.0",
     "react-scripts": "5.0.1",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "typescript": "^4.7.4",
-    "use-http": "^1.0.26",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
@@ -29,9 +30,8 @@
     "build-watch": "rollup -c -w",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build-test": "npx tsc --jsx preserve -t es2020 --outDir build-test --noEmit false",
     "test": "jest ./src/tests --detectOpenHandles",
-    "build-and-test": "yarn build-test && yarn test"
+    "build-and-test": "yarn build && yarn test"
   },
   "eslintConfig": {
     "extends": [
