@@ -105,9 +105,6 @@ function Card(_a) {
 function useGetMedium(username, ssr) {
     var _a = useState([]), dataMedium = _a[0], setDataMedium = _a[1];
     var array = useArray().array;
-    if (ssr) {
-        return;
-    }
     function fetchMedium() {
         return __awaiter(this, void 0, void 0, function () {
             var baseUrl, response, data;
@@ -126,7 +123,7 @@ function useGetMedium(username, ssr) {
         });
     }
     useEffect(function () {
-        if (!array(dataMedium).isEmpty) {
+        if (!array(dataMedium).isEmpty || ssr) {
             return;
         }
         fetchMedium();
