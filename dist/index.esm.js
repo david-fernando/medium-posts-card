@@ -211,10 +211,13 @@ function Carousel(_a) {
 var axios = require('axios');
 function fetchMedium(username) {
     return __awaiter(this, void 0, void 0, function () {
-        var baseUrl, response, data;
+        var data, baseUrl, response;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    if (data) {
+                        return [2 /*return*/];
+                    }
                     baseUrl = 'https://mediumpostapi.herokuapp.com';
                     return [4 /*yield*/, axios.get("".concat(baseUrl, "/?usermedium=").concat(username))];
                 case 1:
