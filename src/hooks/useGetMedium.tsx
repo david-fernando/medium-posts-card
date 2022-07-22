@@ -1,42 +1,28 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import useArray from './useArray';
-import mockMedium from '../mocks/dataMedium';
 
-function useGetMedium(username: string, ssr: boolean){
-  const [dataMedium, setDataMedium]: Array<any> = useState([]);
+
+function useGetMedium(username?: string, ssr?: boolean){
+  const [dataMedium, setDataMedium]:Array<any> = useState([]);
   const { array } = useArray()
-  const environment = process.env.NODE_ENV
-  const isItaTestEnvironment = environment === 'test'
-  const urlBase = 'https://mediumpostapi.herokuapp.com'
 
-  const getMedium = async () => {
-    if(!array(dataMedium).isEmpty){
-      return;
-    }
-    if(isItaTestEnvironment){
-      setDataMedium(mockMedium.data.dataMedium)
-      return;
-    }
-    const response = await axios.get(`${urlBase}/?usermedium=${username}`);
+  async function fetchMedium(){
+    const baseUrl = 'https://mediumpostapi.herokuapp.com'
+  
+    const response = await axios.get(`${baseUrl}/?usermedium=${username}`)
     const data = response.data.dataMedium
-    setDataMedium(data);
-  }
-
-  if(ssr){
-    (async()=> await getMedium())()
+    setDataMedium(data)
   }
 
   useEffect(() => {
-    if(ssr){
+    if(!array(dataMedium).isEmpty || ssr){
       return;
     }
-    getMedium();
-  }, [getMedium]);
+    fetchMedium()
+  }, [fetchMedium]);
 
-  return {
-    dataMedium
-  }
+  return dataMedium
 
 }
 
