@@ -3,12 +3,16 @@ import { renderToString } from 'react-dom/server'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
-import Carousel from '../../build-test/components/Carousel'
+import { Carousel, fetchMedium } from '../../dist/index.esm.js'
 
 const handlers = [
-  rest.get('http://localhost:3333/carousel', (request, response, context)=>{
+  rest.get('http://localhost:3333/carousel', async(request, response, context)=>{
 
-    const component = renderToString(<Carousel username='davidfernandodamata21' options={{ssr: true}} />)
+    const data = await fetchMedium('alex.streza')
+
+    const component = renderToString(
+      <Carousel dataMedium={data} />
+    )
 
     const html = `<!DOCTYPE html>
     <html lang="en">
