@@ -111,9 +111,12 @@ function Card(_a) {
     return (jsxRuntime.jsxs("div", __assign({ className: classnames__default["default"](modules_e5a68879.container, borderRadiusContainer) }, { children: [jsxRuntime.jsx("span", { children: jsxRuntime.jsx("img", { className: classnames__default["default"](modules_e5a68879.thumbnail, borderRadiusThumbnail), src: imageUrl, alt: userdata.title }) }), jsxRuntime.jsxs("span", __assign({ className: modules_e5a68879.content }, { children: [jsxRuntime.jsx("span", __assign({ className: modules_e5a68879.title }, { children: userdata.title })), jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.description }, { children: userdata.description })), (options.showDate) && (jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.date }, { children: userdata.date }))), (options.showTags) && (jsxRuntime.jsx("p", __assign({ className: modules_e5a68879.tags }, { children: tagsWithBlankSpace })))] }))] })));
 }
 
-function useGetMedium(username) {
+function useGetMedium(username, ssr) {
     var _a = react.useState([]), dataMedium = _a[0], setDataMedium = _a[1];
     var array = useArray().array;
+    if (ssr) {
+        return;
+    }
     function fetchMedium() {
         return __awaiter(this, void 0, void 0, function () {
             var baseUrl, response, data;
@@ -202,10 +205,9 @@ n(css,{});
 
 function Carousel(_a) {
     var _b = _a.username, username = _b === void 0 ? '' : _b, dataMedium = _a.dataMedium, _c = _a.options, options = _c === void 0 ? {} : _c;
-    // const ssr = options?.ssr || false
-    // const context = useContext(ServerSideContext)
+    var ssr = (options === null || options === void 0 ? void 0 : options.ssr) || false;
     var array = useArray().array;
-    var data = useGetMedium(username);
+    var data = useGetMedium(username, ssr);
     var medium = (array(data).isEmpty) ? dataMedium === null || dataMedium === void 0 ? void 0 : dataMedium.dataMedium : data;
     var _d = useCarousel(), moveForward = _d.moveForward, moveBack = _d.moveBack, position = _d.position;
     var openInNewTab = (options.hasOwnProperty('openInNewTab')) ? options.openInNewTab : true;
