@@ -12,9 +12,16 @@ interface User {
   username: string
 }
 
+interface Medium {
+  dataMedium: {
+    dataMedium: any
+  }
+}
+
 interface Props {
-  username: User["username"],
-  options?: Options["options"]
+  username?: User["username"],
+  dataMedium?: Medium["dataMedium"],
+  options?: Options["options"],
 }
 
 interface UserData {
@@ -36,5 +43,6 @@ export {
   Props,
   Options,
   User,
-  CardProps
+  CardProps,
+  ServerSideProps
 }
