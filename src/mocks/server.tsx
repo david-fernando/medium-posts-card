@@ -11,7 +11,7 @@ const handlers = [
     const data = await fetchMedium('alex.streza')
 
     const component = renderToString(
-      <Carousel dataMedium={data} />
+      <Carousel dataMedium={data} options={{ssr: true}} />
     )
 
     const html = `<!DOCTYPE html>
