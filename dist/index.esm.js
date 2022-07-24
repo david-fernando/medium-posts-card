@@ -2,7 +2,6 @@ import { jsxs, jsx } from 'react/jsx-runtime';
 import { useState, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import { GrFormPrevious, GrFormNext } from 'react-icons/gr';
-import axios$1 from 'axios';
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -102,31 +101,50 @@ function Card(_a) {
     return (jsxs("div", __assign({ className: classnames(modules_e5a68879.container, borderRadiusContainer) }, { children: [jsx("span", { children: jsx("img", { className: classnames(modules_e5a68879.thumbnail, borderRadiusThumbnail), src: imageUrl, alt: userdata.title }) }), jsxs("span", __assign({ className: modules_e5a68879.content }, { children: [jsx("span", __assign({ className: modules_e5a68879.title }, { children: userdata.title })), jsx("p", __assign({ className: modules_e5a68879.description }, { children: userdata.description })), (options.showDate) && (jsx("p", __assign({ className: modules_e5a68879.date }, { children: userdata.date }))), (options.showTags) && (jsx("p", __assign({ className: modules_e5a68879.tags }, { children: tagsWithBlankSpace })))] }))] })));
 }
 
+var axios = require('axios');
+function fetchMedium(username) {
+    return __awaiter(this, void 0, void 0, function () {
+        var baseUrl, response, data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    baseUrl = 'https://mediumpostapi.herokuapp.com';
+                    return [4 /*yield*/, axios.get("".concat(baseUrl, "/?usermedium=").concat(username))];
+                case 1:
+                    response = _a.sent();
+                    data = response.data;
+                    return [2 /*return*/, data];
+            }
+        });
+    });
+}
+
 function useGetMedium(username, ssr) {
+    var _this = this;
     var _a = useState([]), dataMedium = _a[0], setDataMedium = _a[1];
     var array = useArray().array;
-    function fetchMedium() {
-        return __awaiter(this, void 0, void 0, function () {
-            var baseUrl, response, data;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        baseUrl = 'https://mediumpostapi.herokuapp.com';
-                        return [4 /*yield*/, axios$1.get("".concat(baseUrl, "/?usermedium=").concat(username))];
-                    case 1:
-                        response = _a.sent();
-                        data = response.data.dataMedium;
-                        setDataMedium(data);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    }
+    // async function fetchMedium(){
+    //   const baseUrl = 'https://mediumpostapi.herokuapp.com'
+    //   const response = await axios.get(`${baseUrl}/?usermedium=${username}`)
+    //   const data = response.data.dataMedium
+    //   setDataMedium(data)
+    // }
     useEffect(function () {
         if (!array(dataMedium).isEmpty || ssr) {
             return;
         }
-        fetchMedium();
+        (function () { return __awaiter(_this, void 0, void 0, function () {
+            var data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, fetchMedium(username)];
+                    case 1:
+                        data = _a.sent();
+                        setDataMedium(data.dataMedium);
+                        return [2 /*return*/];
+                }
+            });
+        }); })();
     }, [fetchMedium]);
     return dataMedium;
 }
@@ -194,9 +212,8 @@ n(css,{});
 function Carousel(_a) {
     var _b = _a.username, username = _b === void 0 ? '' : _b, dataMedium = _a.dataMedium, _c = _a.options, options = _c === void 0 ? {} : _c;
     var ssr = (options === null || options === void 0 ? void 0 : options.ssr) || false;
-    var array = useArray().array;
     var data = useGetMedium(username, ssr);
-    var medium = (array(data).isEmpty) ? dataMedium === null || dataMedium === void 0 ? void 0 : dataMedium.dataMedium : data;
+    var medium = (ssr) ? dataMedium === null || dataMedium === void 0 ? void 0 : dataMedium.dataMedium : data;
     var _d = useCarousel(), moveForward = _d.moveForward, moveBack = _d.moveBack, position = _d.position;
     var openInNewTab = (options.hasOwnProperty('openInNewTab')) ? options.openInNewTab : true;
     var nameTarget = (openInNewTab) ? '_blank' : '_self';
@@ -205,28 +222,6 @@ function Carousel(_a) {
     var cardIsVisible = useIsVisible(carouselContainer, cardContainer);
     var returnLastCard = useLastCard().returnLastCard;
     return (jsxs("div", __assign({ className: modules_d1f32e6e.container, ref: carouselContainer }, { children: [(position > 0) && (jsx("button", __assign({ onClick: function () { return moveBack(); }, className: classnames(modules_d1f32e6e.carouselButton, modules_d1f32e6e.previousButton) }, { children: jsx(GrFormPrevious, { className: modules_d1f32e6e.iconButton, size: 24 }) }))), jsx("span", __assign({ className: modules_d1f32e6e.content, style: { right: "".concat(position, "rem"), transition: 'right 0.6s linear' } }, { children: medium.map(function (item, index) { return (jsx("a", __assign({ href: item.link, ref: returnLastCard(index, medium, cardContainer), target: nameTarget }, { children: jsx(Card, { userdata: item, options: options }) }), index)); }) })), (!cardIsVisible) && (jsx("button", __assign({ onClick: function () { return moveForward(cardIsVisible); }, className: classnames(modules_d1f32e6e.carouselButton, modules_d1f32e6e.nextButton) }, { children: jsx(GrFormNext, { className: modules_d1f32e6e.iconButton, size: 24 }) })))] })));
-}
-
-var axios = require('axios');
-function fetchMedium(username) {
-    return __awaiter(this, void 0, void 0, function () {
-        var isBrowser, baseUrl, response, data;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    isBrowser = typeof window !== 'undefined';
-                    if (isBrowser) {
-                        return [2 /*return*/];
-                    }
-                    baseUrl = 'https://mediumpostapi.herokuapp.com';
-                    return [4 /*yield*/, axios.get("".concat(baseUrl, "/?usermedium=").concat(username))];
-                case 1:
-                    response = _a.sent();
-                    data = response.data;
-                    return [2 /*return*/, data];
-            }
-        });
-    });
 }
 
 export { Carousel, fetchMedium };
