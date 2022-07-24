@@ -7,15 +7,13 @@ import useGetMedium from '../hooks/useGetMedium';
 import useCarousel from '../hooks/useCarousel';
 import useIsVisible from '../hooks/useIsVisible';
 import useLastCard from '../hooks/useLastCard';
-import useArray from '../hooks/useArray';
 
 import styles from '../style/Carousel.module.css'
 
 function Carousel({ username = '', dataMedium, options = {} }: Props){
   const ssr = options?.ssr || false
-  const { array } = useArray()
   const data = useGetMedium(username, ssr)
-  const medium = (array(data).isEmpty)? dataMedium?.dataMedium : data
+  const medium = (ssr)? dataMedium?.dataMedium : data
   const { moveForward, moveBack, position } = useCarousel()
   const openInNewTab = (options.hasOwnProperty('openInNewTab'))? options.openInNewTab : true
   const nameTarget = (openInNewTab)? '_blank' : '_self'
