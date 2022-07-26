@@ -8,7 +8,7 @@ import { Carousel, fetchMedium } from '../../dist/index.esm.js'
 const handlers = [
   rest.get('http://localhost:3333/carousel', async(request, response, context)=>{
 
-    const data = await fetchMedium('alex.streza')
+    const data = await fetchMedium('davidfernandodamata21')
 
     const component = renderToString(
       <Carousel dataMedium={data} options={{ssr: true}} />
