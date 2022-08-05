@@ -4,11 +4,11 @@
 
 .container {
   width: 100%;
-  height: min-content;
+  height: 18.3rem;
   min-height: 18.3rem;
   max-height: 26rem;
-  display: flex;
-  background: #fff;
+  display: block;
+  background: none;
   overflow: hidden;
   padding-bottom: 0.2rem
 }
@@ -28,9 +28,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 20;
-  position: absolute;
-  top: 9rem;
+  /* z-index: 20;
+  position: absolute; */
+  position: relative;
+  z-index: 1;
   border: 0;
   background: rgba(0,0,0,.5);
   opacity: 1;
@@ -38,55 +39,16 @@
 
 .previousButton {
   margin-left: 0.5%;
+  float: left;
+  top: 8.4rem;
 }
 
 .nextButton {
-  margin-left: 85%;
+  float: right;
+  right: 1rem;
+  top: -9.7rem;
 }
 
 .iconButton > :local(polyline) {
   stroke: #fff;
-}
-
-
-@media (min-width: 482px) {
-  .nextButton {
-    margin-left: 87%;
-  } 
-}
-
-@media (min-width: 582px) {
-  .nextButton {
-    margin-left: 89%;
-  } 
-}
-
-@media (min-width: 643px) {
-  .nextButton {
-    margin-left: 90%;
-  } 
-}
-
-@media (min-width: 763px) {
-  .nextButton {
-    margin-left: 92%;
-  } 
-}
-
-@media (min-width: 933px) {
-  .nextButton {
-    margin-left: 93%;
-  } 
-}
-
-@media (min-width: 1007px) {
-  .nextButton {
-    margin-left: 94%;
-  } 
-}
-
-@media (min-width: 1289px) {
-  .nextButton {
-    margin-left: 95%;
-  } 
 }
