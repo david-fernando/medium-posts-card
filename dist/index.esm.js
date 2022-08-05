@@ -123,12 +123,6 @@ function useGetMedium(username, ssr) {
     var _this = this;
     var _a = useState([]), dataMedium = _a[0], setDataMedium = _a[1];
     var array = useArray().array;
-    // async function fetchMedium(){
-    //   const baseUrl = 'https://mediumpostapi.herokuapp.com'
-    //   const response = await axios.get(`${baseUrl}/?usermedium=${username}`)
-    //   const data = response.data.dataMedium
-    //   setDataMedium(data)
-    // }
     useEffect(function () {
         if (!array(dataMedium).isEmpty || ssr) {
             return;
@@ -205,8 +199,8 @@ function useLastCard() {
     };
 }
 
-var css = "a {\r\n  text-decoration: none;\r\n}\r\n\r\n.Carousel_module_container__00d20a78 {\r\n  width: 100%;\r\n  height: min-content;\r\n  min-height: 18.3rem;\r\n  max-height: 26rem;\r\n  display: flex;\r\n  background: #fff;\r\n  overflow: hidden;\r\n  padding-bottom: 0.2rem\r\n}\r\n\r\n\r\n.Carousel_module_content__00d20a78 {\r\n  display: flex;\r\n  position: relative;\r\n  background: #fff;\r\n  gap: 1rem;\r\n}\r\n\r\n.Carousel_module_carouselButton__00d20a78 {\r\n  width: 2.4rem;\r\n  height: 2.4rem;\r\n  border-radius: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  z-index: 20;\r\n  position: absolute;\r\n  top: 9rem;\r\n  border: 0;\r\n  background: rgba(0,0,0,.5);\r\n  opacity: 1;\r\n}\r\n\r\n.Carousel_module_previousButton__00d20a78 {\r\n  margin-left: 0.5%;\r\n}\r\n\r\n.Carousel_module_nextButton__00d20a78 {\r\n  margin-left: 85%;\r\n}\r\n\r\n.Carousel_module_iconButton__00d20a78 > polyline {\r\n  stroke: #fff;\r\n}\r\n\r\n\r\n@media (min-width: 482px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 87%;\r\n  } \r\n}\r\n\r\n@media (min-width: 582px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 89%;\r\n  } \r\n}\r\n\r\n@media (min-width: 643px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 90%;\r\n  } \r\n}\r\n\r\n@media (min-width: 763px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 92%;\r\n  } \r\n}\r\n\r\n@media (min-width: 933px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 93%;\r\n  } \r\n}\r\n\r\n@media (min-width: 1007px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 94%;\r\n  } \r\n}\r\n\r\n@media (min-width: 1289px) {\r\n  .Carousel_module_nextButton__00d20a78 {\r\n    margin-left: 95%;\r\n  } \r\n}";
-var modules_d1f32e6e = {"container":"Carousel_module_container__00d20a78","content":"Carousel_module_content__00d20a78","carouselButton":"Carousel_module_carouselButton__00d20a78","previousButton":"Carousel_module_previousButton__00d20a78","nextButton":"Carousel_module_nextButton__00d20a78","iconButton":"Carousel_module_iconButton__00d20a78"};
+var css = "a {\r\n  text-decoration: none;\r\n}\r\n\r\n.Carousel_module_container__e9da59a6 {\r\n  width: 100%;\r\n  height: 18.3rem;\r\n  min-height: 18.3rem;\r\n  max-height: 26rem;\r\n  display: block;\r\n  background: none;\r\n  overflow: hidden;\r\n  padding-bottom: 0.2rem\r\n}\r\n\r\n\r\n.Carousel_module_content__e9da59a6 {\r\n  display: flex;\r\n  position: relative;\r\n  background: #fff;\r\n  gap: 1rem;\r\n}\r\n\r\n.Carousel_module_carouselButton__e9da59a6 {\r\n  width: 2.4rem;\r\n  height: 2.4rem;\r\n  border-radius: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  /* z-index: 20;\r\n  position: absolute; */\r\n  position: relative;\r\n  z-index: 1;\r\n  border: 0;\r\n  background: rgba(0,0,0,.5);\r\n  opacity: 1;\r\n}\r\n\r\n.Carousel_module_previousButton__e9da59a6 {\r\n  margin-left: 0.5%;\r\n  float: left;\r\n  top: 8.4rem;\r\n}\r\n\r\n.Carousel_module_nextButton__e9da59a6 {\r\n  float: right;\r\n  right: 1rem;\r\n  top: -9.7rem;\r\n}\r\n\r\n.Carousel_module_iconButton__e9da59a6 > polyline {\r\n  stroke: #fff;\r\n}";
+var modules_d1f32e6e = {"container":"Carousel_module_container__e9da59a6","content":"Carousel_module_content__e9da59a6","carouselButton":"Carousel_module_carouselButton__e9da59a6","previousButton":"Carousel_module_previousButton__e9da59a6","nextButton":"Carousel_module_nextButton__e9da59a6","iconButton":"Carousel_module_iconButton__e9da59a6"};
 n(css,{});
 
 function Carousel(_a) {
