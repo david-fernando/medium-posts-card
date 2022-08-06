@@ -28,8 +28,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* z-index: 20;
-  position: absolute; */
   position: relative;
   z-index: 1;
   border: 0;
