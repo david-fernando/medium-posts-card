@@ -31,5 +31,16 @@ function Container({ children }){
   )
 }
 
-export const withoutContainer = () => <Carousel username="alex.streza" />
+export const Basic = (args) => <Carousel {...args} />
 export const withContainer = () => <Container> <Carousel username="alex.streza" /> </Container>
+
+Basic.args = { 
+  username: "alex.streza",
+  options: {
+    borderRadius: true,
+    showTags: false,
+    showDate: false,
+    openInNewTab: true,
+  },
+  dataMedium: { disable: true }
+ }
