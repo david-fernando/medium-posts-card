@@ -13,6 +13,7 @@ function Container({ children }){
     display: 'flex',
     justifyContent: 'center'
   }
+  
   const content = {
     width: '80%',
     height: 'max-content',
