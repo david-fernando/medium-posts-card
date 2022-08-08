@@ -178,6 +178,7 @@ function useIsVisible(container, element) {
     var elementDefaultValue = { x: 0 };
     var containerDefaultValue = { width: 0 };
     var timeInMiliseconds = 20;
+    var excess = 90;
     setTimeout(function () {
         var _a, _b, _c, _d;
         var x = (((_b = (_a = element.current) === null || _a === void 0 ? void 0 : _a.getBoundingClientRect) === null || _b === void 0 ? void 0 : _b.call(_a)) || elementDefaultValue).x;
@@ -190,7 +191,7 @@ function useIsVisible(container, element) {
         // eslint-disable-next-line 
     }, [elementPosition]);
     function determineIfElementIsVisible() {
-        var isElementVisible = (elementPosition < containerWidth) ? true : false;
+        var isElementVisible = (elementPosition + excess < containerWidth) ? true : false;
         setIsVisible(isElementVisible);
     }
     return isVisible;
@@ -207,8 +208,8 @@ function useLastCard() {
     };
 }
 
-var css = "a {\r\n  text-decoration: none;\r\n}\r\n\r\n.Carousel_module_container__8b418cc9 {\r\n  width: 100%;\r\n  height: 18.3rem;\r\n  min-height: 18.3rem;\r\n  max-height: 26rem;\r\n  display: block;\r\n  background: none;\r\n  overflow: hidden;\r\n  padding-bottom: 0.2rem\r\n}\r\n\r\n\r\n.Carousel_module_content__8b418cc9 {\r\n  display: flex;\r\n  position: relative;\r\n  background: #fff;\r\n  gap: 1rem;\r\n}\r\n\r\n.Carousel_module_carouselButton__8b418cc9 {\r\n  width: 2.4rem;\r\n  height: 2.4rem;\r\n  border-radius: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  position: relative;\r\n  z-index: 1;\r\n  border: 0;\r\n  background: rgba(0,0,0,.5);\r\n  opacity: 1;\r\n}\r\n\r\n.Carousel_module_previousButton__8b418cc9 {\r\n  margin-left: 0.5%;\r\n  float: left;\r\n  top: 8.4rem;\r\n}\r\n\r\n.Carousel_module_nextButton__8b418cc9 {\r\n  float: right;\r\n  right: 1rem;\r\n  top: -9.7rem;\r\n}\r\n\r\n.Carousel_module_iconButton__8b418cc9 > polyline {\r\n  stroke: #fff;\r\n}";
-var modules_d1f32e6e = {"container":"Carousel_module_container__8b418cc9","content":"Carousel_module_content__8b418cc9","carouselButton":"Carousel_module_carouselButton__8b418cc9","previousButton":"Carousel_module_previousButton__8b418cc9","nextButton":"Carousel_module_nextButton__8b418cc9","iconButton":"Carousel_module_iconButton__8b418cc9"};
+var css = "a {\r\n  text-decoration: none;\r\n}\r\n\r\n.Carousel_module_container__6505e92d {\r\n  width: 100%;\r\n  height: 18.3rem;\r\n  min-height: 18.3rem;\r\n  max-height: 26rem;\r\n  display: block;\r\n  background: none;\r\n  overflow: hidden;\r\n  padding-bottom: 0.2rem\r\n}\r\n\r\n.Carousel_module_content__6505e92d {\r\n  display: flex;\r\n  position: relative;\r\n  background: #fff;\r\n  gap: 1rem;\r\n}\r\n\r\n.Carousel_module_carouselButton__6505e92d {\r\n  width: 2.4rem;\r\n  height: 2.4rem;\r\n  border-radius: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  position: relative;\r\n  z-index: 1;\r\n  border: 0;\r\n  background: rgba(0,0,0,.5);\r\n  opacity: 1;\r\n}\r\n\r\n.Carousel_module_previousButton__6505e92d {\r\n  margin-left: 0.5%;\r\n  float: left;\r\n  top: 8.4rem;\r\n}\r\n\r\n.Carousel_module_nextButton__6505e92d {\r\n  float: right;\r\n  right: 1rem;\r\n  top: -9.7rem;\r\n}\r\n\r\n.Carousel_module_iconButton__6505e92d > polyline {\r\n  stroke: #fff;\r\n}";
+var modules_d1f32e6e = {"container":"Carousel_module_container__6505e92d","content":"Carousel_module_content__6505e92d","carouselButton":"Carousel_module_carouselButton__6505e92d","previousButton":"Carousel_module_previousButton__6505e92d","nextButton":"Carousel_module_nextButton__6505e92d","iconButton":"Carousel_module_iconButton__6505e92d"};
 n(css,{});
 
 function Carousel(_a) {
