@@ -31,16 +31,27 @@ function Container({ children }){
   )
 }
 
+const options = {
+  borderRadius: true,
+  showTags: false,
+  showDate: false,
+  openInNewTab: true,
+}
+
 export const Basic = (args) => <Carousel {...args} />
-export const withContainer = () => <Container> <Carousel username="alex.streza" /> </Container>
 
 Basic.args = { 
   username: "alex.streza",
-  options: {
-    borderRadius: true,
-    showTags: false,
-    showDate: false,
-    openInNewTab: true,
-  },
+  options,
   dataMedium: { disable: true }
- }
+}
+
+export const Contained = () => <Container> <Carousel username="alex.streza" /> </Container>
+
+export const Placeholder = (args) => <Carousel {...args} />
+
+Placeholder.args = {
+  username: "getmehiredbootcamp",
+  options,
+  dataMedium: { disable: true }
+}
