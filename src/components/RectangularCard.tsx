@@ -11,19 +11,15 @@ function RectangularCard({ userdata, options = {} }: CardProps){
   const borderRadius = (options.hasOwnProperty('borderRadius'))? options.borderRadius : true
   const borderRadiusContainer = (borderRadius) && styles.borderRadiusContainer
   const borderRadiusThumbnail = (borderRadius) && styles.borderRadiusThumbnail
-  const mediumUrl = userdata.image.split('.clientViewed')[0]
-  const mediumUrlBlocked = 'https://medium.com/_/stat?event=post'
-  const placeholderUrl = 'https://placehold.jp/bdbdc2/ffffff/250x250.png?text=No%20image'
   const tagArray = (array(userdata.tags).isEmpty)? ['NoTags']: userdata.tags
   const { tags } = useBlankSpace(tagArray)
-  const imageUrl = (mediumUrl === mediumUrlBlocked)? placeholderUrl : userdata.image
   
   return (
     <div className={classnames(styles.container, borderRadiusContainer)}>
       <span>
         <img
          className={classnames(styles.thumbnail, borderRadiusThumbnail)} 
-         src={imageUrl}
+         src={userdata.image}
          alt={userdata.title}
         />
       </span>
