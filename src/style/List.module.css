@@ -1,0 +1,21 @@
+:global(a) {
+  text-decoration: none;
+}
+
+.container {
+  width: 30rem;
+  height: 100%;
+  min-width: 30rem;
+  max-width: 40rem;
+  display: block;
+  background: none;
+  padding-bottom: 0.2rem
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #fff;
+  gap: 1rem;
+}
