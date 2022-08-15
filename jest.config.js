@@ -6,5 +6,6 @@ module.exports = {
   "setupFilesAfterEnv": ["./src/tests/SetupTests.ts"],
   "moduleNameMapper": {
     "\\.(css)$": "identity-obj-proxy"
-  }
+  },
+  testTimeout: 20000
 };
