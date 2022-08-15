@@ -80,11 +80,18 @@ function useArray() {
     };
 }
 
+function useBlankSpace(tagArray) {
+    var tags = tagArray.map(function (item, index) { return item.concat(' '); });
+    return {
+        tags: tags
+    };
+}
+
 var e=[],t=[];function n(n,r){if(n&&"undefined"!=typeof document){var a,s=!0===r.prepend?"prepend":"append",d=!0===r.singleTag,i="string"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName("head")[0];if(d){var u=e.indexOf(i);-1===u&&(u=e.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement("style");if(e.setAttribute("type","text/css"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a="prepend"===s?"afterbegin":"beforeend";return i.insertAdjacentElement(a,e),e}}
 
-var css$1 = ".Card_module_container__0e637d59 {\r\n  width: min-content;\r\n  height: 100%;\r\n  min-width: 18rem;\r\n  max-width: 22rem;\r\n  min-height: 18rem;\r\n  max-height: 23rem;\r\n  flex-direction: column;\r\n  display: flex;\r\n  background: #fff;\r\n  border: 1px solid rgba(0,0,0,.2);\r\n  font-size: 10px;\r\n  font-family: 'Roboto', sans-serif;\r\n  margin: 0;\r\n}\r\n\r\n.Card_module_borderRadiusContainer__0e637d59 {\r\n  border-radius: 10px;\r\n}\r\n\r\n.Card_module_thumbnail__0e637d59 {\r\n  width: 100%;\r\n  height: 9.533rem;\r\n  min-height: 9.533rem;\r\n  max-height: 12.533rem;\r\n}\r\n\r\n.Card_module_borderRadiusThumbnail__0e637d59 {\r\n  border-top-left-radius: 10px;\r\n  border-top-right-radius: 10px;\r\n}\r\n\r\n.Card_module_content__0e637d59 {\r\n  padding: 10px;\r\n}\r\n\r\n.Card_module_title__0e637d59, .Card_module_description__0e637d59, .Card_module_date__0e637d59, .Card_module_tags__0e637d59, .Card_module_readMore__0e637d59 {\r\n  font-size: 1rem;\r\n  color: #53565b\r\n}\r\n\r\n.Card_module_title__0e637d59 {\r\n  font-weight: 700;\r\n  text-overflow: ellipsis;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-line-clamp: 2;\r\n  display: -webkit-box;\r\n  overflow: hidden;\r\n}\r\n\r\n.Card_module_description__0e637d59 {\r\n  text-align: initial;\r\n  max-height: 44%;\r\n  text-overflow: ellipsis;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-line-clamp: 2;\r\n  display: -webkit-box;\r\n  overflow: hidden;\r\n}\r\n\r\n.Card_module_date__0e637d59, .Card_module_tags__0e637d59, .Card_module_readMore__0e637d59 {\r\n  font-size: 0.8rem;\r\n}\r\n\r\n.Card_module_tags__0e637d59 {\r\n  word-spacing: 0.5rem;\r\n  line-height: 1.3rem;\r\n}";
-var modules_e5a68879 = {"container":"Card_module_container__0e637d59","borderRadiusContainer":"Card_module_borderRadiusContainer__0e637d59","thumbnail":"Card_module_thumbnail__0e637d59","borderRadiusThumbnail":"Card_module_borderRadiusThumbnail__0e637d59","content":"Card_module_content__0e637d59","title":"Card_module_title__0e637d59","description":"Card_module_description__0e637d59","date":"Card_module_date__0e637d59","tags":"Card_module_tags__0e637d59","readMore":"Card_module_readMore__0e637d59"};
-n(css$1,{});
+var css$3 = ".Card_module_container__864dde09 {\r\n  width: min-content;\r\n  height: 100%;\r\n  min-width: 18rem;\r\n  max-width: 22rem;\r\n  min-height: 18rem;\r\n  max-height: 23rem;\r\n  flex-direction: column;\r\n  display: flex;\r\n  background: #fff;\r\n  border: 1px solid rgba(0,0,0,.2);\r\n  font-size: 10px;\r\n  font-family: 'Roboto', sans-serif;\r\n  margin: 0;\r\n}\r\n\r\n.Card_module_borderRadiusContainer__864dde09 {\r\n  border-radius: 10px;\r\n}\r\n\r\n.Card_module_thumbnail__864dde09 {\r\n  width: 100%;\r\n  height: 9.533rem;\r\n  min-height: 9.533rem;\r\n  max-height: 12.533rem;\r\n}\r\n\r\n.Card_module_borderRadiusThumbnail__864dde09 {\r\n  border-top-left-radius: 10px;\r\n  border-top-right-radius: 10px;\r\n}\r\n\r\n.Card_module_content__864dde09 {\r\n  padding: 10px;\r\n}\r\n\r\n.Card_module_title__864dde09, .Card_module_description__864dde09, .Card_module_date__864dde09, .Card_module_tags__864dde09 {\r\n  font-size: 1rem;\r\n  color: #53565b\r\n}\r\n\r\n.Card_module_title__864dde09 {\r\n  font-weight: 700;\r\n  text-overflow: ellipsis;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-line-clamp: 2;\r\n  display: -webkit-box;\r\n  overflow: hidden;\r\n}\r\n\r\n.Card_module_description__864dde09 {\r\n  text-align: initial;\r\n  max-height: 44%;\r\n  text-overflow: ellipsis;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-line-clamp: 2;\r\n  display: -webkit-box;\r\n  overflow: hidden;\r\n}\r\n\r\n.Card_module_date__864dde09, .Card_module_tags__864dde09 {\r\n  font-size: 0.8rem;\r\n}\r\n\r\n.Card_module_tags__864dde09 {\r\n  word-spacing: 0.5rem;\r\n  line-height: 1.3rem;\r\n}";
+var modules_e5a68879 = {"container":"Card_module_container__864dde09","borderRadiusContainer":"Card_module_borderRadiusContainer__864dde09","thumbnail":"Card_module_thumbnail__864dde09","borderRadiusThumbnail":"Card_module_borderRadiusThumbnail__864dde09","content":"Card_module_content__864dde09","title":"Card_module_title__864dde09","description":"Card_module_description__864dde09","date":"Card_module_date__864dde09","tags":"Card_module_tags__864dde09"};
+n(css$3,{});
 
 function Card(_a) {
     var userdata = _a.userdata, _b = _a.options, options = _b === void 0 ? {} : _b;
@@ -92,13 +99,9 @@ function Card(_a) {
     var borderRadius = (options.hasOwnProperty('borderRadius')) ? options.borderRadius : true;
     var borderRadiusContainer = (borderRadius) && modules_e5a68879.borderRadiusContainer;
     var borderRadiusThumbnail = (borderRadius) && modules_e5a68879.borderRadiusThumbnail;
-    var mediumUrl = userdata.image.split('.clientViewed')[0];
-    var mediumUrlBlocked = 'https://medium.com/_/stat?event=post';
-    var placeholderUrl = 'https://placehold.jp/bdbdc2/ffffff/250x250.png?text=No%20image';
-    var tags = (array(userdata.tags).isEmpty) ? ['NoTags'] : userdata.tags;
-    var tagsWithBlankSpace = tags.map(function (item, index) { return item.concat(' '); });
-    var imageUrl = (mediumUrl === mediumUrlBlocked) ? placeholderUrl : userdata.image;
-    return (jsxs("div", __assign({ className: classnames(modules_e5a68879.container, borderRadiusContainer) }, { children: [jsx("span", { children: jsx("img", { className: classnames(modules_e5a68879.thumbnail, borderRadiusThumbnail), src: imageUrl, alt: userdata.title }) }), jsxs("span", __assign({ className: modules_e5a68879.content }, { children: [jsx("span", __assign({ className: modules_e5a68879.title }, { children: userdata.title })), jsx("p", __assign({ className: modules_e5a68879.description }, { children: userdata.description })), (options.showDate) && (jsx("p", __assign({ className: modules_e5a68879.date }, { children: userdata.date }))), (options.showTags) && (jsx("p", __assign({ className: modules_e5a68879.tags }, { children: tagsWithBlankSpace })))] }))] })));
+    var tagArray = (array(userdata.tags).isEmpty) ? ['NoTags'] : userdata.tags;
+    var tags = useBlankSpace(tagArray).tags;
+    return (jsxs("div", __assign({ className: classnames(modules_e5a68879.container, borderRadiusContainer) }, { children: [jsx("span", { children: jsx("img", { className: classnames(modules_e5a68879.thumbnail, borderRadiusThumbnail), src: userdata.image, alt: userdata.title }) }), jsxs("span", __assign({ className: modules_e5a68879.content }, { children: [jsx("span", __assign({ className: modules_e5a68879.title }, { children: userdata.title })), jsx("p", __assign({ className: modules_e5a68879.description }, { children: userdata.description })), (options.showDate) && (jsx("p", __assign({ className: modules_e5a68879.date }, { children: userdata.date }))), (options.showTags) && (jsx("p", __assign({ className: modules_e5a68879.tags }, { children: tags })))] }))] })));
 }
 
 var axios = require('axios');
@@ -200,9 +203,9 @@ function useLastCard() {
     };
 }
 
-var css = "a {\r\n  text-decoration: none;\r\n}\r\n\r\n.Carousel_module_container__6505e92d {\r\n  width: 100%;\r\n  height: 18.3rem;\r\n  min-height: 18.3rem;\r\n  max-height: 26rem;\r\n  display: block;\r\n  background: none;\r\n  overflow: hidden;\r\n  padding-bottom: 0.2rem\r\n}\r\n\r\n.Carousel_module_content__6505e92d {\r\n  display: flex;\r\n  position: relative;\r\n  background: #fff;\r\n  gap: 1rem;\r\n}\r\n\r\n.Carousel_module_carouselButton__6505e92d {\r\n  width: 2.4rem;\r\n  height: 2.4rem;\r\n  border-radius: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  position: relative;\r\n  z-index: 1;\r\n  border: 0;\r\n  background: rgba(0,0,0,.5);\r\n  opacity: 1;\r\n}\r\n\r\n.Carousel_module_previousButton__6505e92d {\r\n  margin-left: 0.5%;\r\n  float: left;\r\n  top: 8.4rem;\r\n}\r\n\r\n.Carousel_module_nextButton__6505e92d {\r\n  float: right;\r\n  right: 1rem;\r\n  top: -9.7rem;\r\n}\r\n\r\n.Carousel_module_iconButton__6505e92d > polyline {\r\n  stroke: #fff;\r\n}";
-var modules_d1f32e6e = {"container":"Carousel_module_container__6505e92d","content":"Carousel_module_content__6505e92d","carouselButton":"Carousel_module_carouselButton__6505e92d","previousButton":"Carousel_module_previousButton__6505e92d","nextButton":"Carousel_module_nextButton__6505e92d","iconButton":"Carousel_module_iconButton__6505e92d"};
-n(css,{});
+var css$2 = "a {\r\n  text-decoration: none;\r\n}\r\n\r\n.Carousel_module_container__62c1627e {\r\n  width: 100%;\r\n  height: 100%;\r\n  min-height: 18.3rem;\r\n  max-height: 26rem;\r\n  display: block;\r\n  background: none;\r\n  overflow-x: hidden;\r\n  padding-bottom: 0.2rem\r\n}\r\n\r\n.Carousel_module_content__62c1627e {\r\n  display: flex;\r\n  position: relative;\r\n  background: #fff;\r\n  gap: 1rem;\r\n}\r\n\r\n.Carousel_module_carouselButton__62c1627e {\r\n  width: 2.4rem;\r\n  height: 2.4rem;\r\n  border-radius: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  position: relative;\r\n  z-index: 1;\r\n  border: 0;\r\n  background: rgba(0,0,0,.5);\r\n  opacity: 1;\r\n}\r\n\r\n.Carousel_module_previousButton__62c1627e {\r\n  margin-left: 0.5%;\r\n  float: left;\r\n  top: 8.4rem;\r\n}\r\n\r\n.Carousel_module_nextButton__62c1627e {\r\n  float: right;\r\n  right: 1rem;\r\n  top: -9.7rem;\r\n}\r\n\r\n.Carousel_module_iconButton__62c1627e > polyline {\r\n  stroke: #fff;\r\n}";
+var modules_d1f32e6e = {"container":"Carousel_module_container__62c1627e","content":"Carousel_module_content__62c1627e","carouselButton":"Carousel_module_carouselButton__62c1627e","previousButton":"Carousel_module_previousButton__62c1627e","nextButton":"Carousel_module_nextButton__62c1627e","iconButton":"Carousel_module_iconButton__62c1627e"};
+n(css$2,{});
 
 function Carousel(_a) {
     var _b = _a.username, username = _b === void 0 ? '' : _b, dataMedium = _a.dataMedium, _c = _a.options, options = _c === void 0 ? {} : _c;
@@ -219,4 +222,33 @@ function Carousel(_a) {
     return (jsxs("div", __assign({ className: modules_d1f32e6e.container, ref: carouselContainer }, { children: [(position > 0) && (jsx("button", __assign({ onClick: function () { return moveBack(); }, className: classnames(modules_d1f32e6e.carouselButton, modules_d1f32e6e.previousButton) }, { children: jsx(GrFormPrevious, { className: modules_d1f32e6e.iconButton, size: 24 }) }))), jsx("span", __assign({ className: modules_d1f32e6e.content, style: { right: "".concat(position, "rem"), transition: 'right 0.6s linear' } }, { children: medium.map(function (item, index) { return (jsx("a", __assign({ href: item.link, ref: returnLastCard(index, medium, cardContainer), target: nameTarget }, { children: jsx(Card, { userdata: item, options: options }) }), index)); }) })), (!cardIsVisible) && (jsx("button", __assign({ onClick: function () { return moveForward(cardIsVisible); }, className: classnames(modules_d1f32e6e.carouselButton, modules_d1f32e6e.nextButton) }, { children: jsx(GrFormNext, { className: modules_d1f32e6e.iconButton, size: 24 }) })))] })));
 }
 
-export { Carousel, fetchMedium };
+var css$1 = ".RectangularCard_module_container__0b2073a4 {\r\n  width: 30rem;\r\n  height: 100%;\r\n  min-width: 30rem;\r\n  max-width: 40rem;\r\n  min-height: 12rem;\r\n  max-height: 23rem;\r\n  display: flex;\r\n  background: #fff;\r\n  border: 1px solid rgba(0,0,0,.2);\r\n  font-size: 10px;\r\n  font-family: 'Roboto', sans-serif;\r\n  margin: 0;\r\n}\r\n\r\n.RectangularCard_module_borderRadiusContainer__0b2073a4 {\r\n  border-radius: 10px;\r\n}\r\n\r\n.RectangularCard_module_thumbnail__0b2073a4 {\r\n  width: 12.533rem;\r\n  height: 100%;\r\n  min-height: 9.533rem;\r\n  max-height: 12.533rem;\r\n}\r\n\r\n.RectangularCard_module_borderRadiusThumbnail__0b2073a4 {\r\n  border-top-left-radius: 10px;\r\n  border-bottom-left-radius: 10px\r\n}\r\n\r\n.RectangularCard_module_content__0b2073a4 {\r\n  padding: 10px;\r\n}\r\n\r\n.RectangularCard_module_title__0b2073a4, .RectangularCard_module_description__0b2073a4, .RectangularCard_module_date__0b2073a4, .RectangularCard_module_tags__0b2073a4 {\r\n  font-size: 1rem;\r\n  color: #53565b\r\n}\r\n\r\n.RectangularCard_module_title__0b2073a4 {\r\n  font-weight: 700;\r\n  text-overflow: ellipsis;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-line-clamp: 2;\r\n  display: -webkit-box;\r\n  overflow: hidden;\r\n}\r\n\r\n.RectangularCard_module_description__0b2073a4 {\r\n  text-align: initial;\r\n  max-height: 44%;\r\n  text-overflow: ellipsis;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-line-clamp: 2;\r\n  display: -webkit-box;\r\n  overflow: hidden;\r\n}\r\n\r\n.RectangularCard_module_date__0b2073a4, .RectangularCard_module_tags__0b2073a4 {\r\n  font-size: 0.8rem;\r\n}\r\n\r\n.RectangularCard_module_tags__0b2073a4 {\r\n  word-spacing: 0.5rem;\r\n  line-height: 1.3rem;\r\n}";
+var modules_cb0e83ce = {"container":"RectangularCard_module_container__0b2073a4","borderRadiusContainer":"RectangularCard_module_borderRadiusContainer__0b2073a4","thumbnail":"RectangularCard_module_thumbnail__0b2073a4","borderRadiusThumbnail":"RectangularCard_module_borderRadiusThumbnail__0b2073a4","content":"RectangularCard_module_content__0b2073a4","title":"RectangularCard_module_title__0b2073a4","description":"RectangularCard_module_description__0b2073a4","date":"RectangularCard_module_date__0b2073a4","tags":"RectangularCard_module_tags__0b2073a4"};
+n(css$1,{});
+
+function RectangularCard(_a) {
+    var userdata = _a.userdata, _b = _a.options, options = _b === void 0 ? {} : _b;
+    var array = useArray().array;
+    var borderRadius = (options.hasOwnProperty('borderRadius')) ? options.borderRadius : true;
+    var borderRadiusContainer = (borderRadius) && modules_cb0e83ce.borderRadiusContainer;
+    var borderRadiusThumbnail = (borderRadius) && modules_cb0e83ce.borderRadiusThumbnail;
+    var tagArray = (array(userdata.tags).isEmpty) ? ['NoTags'] : userdata.tags;
+    var tags = useBlankSpace(tagArray).tags;
+    return (jsxs("div", __assign({ className: classnames(modules_cb0e83ce.container, borderRadiusContainer) }, { children: [jsx("span", { children: jsx("img", { className: classnames(modules_cb0e83ce.thumbnail, borderRadiusThumbnail), src: userdata.image, alt: userdata.title }) }), jsxs("span", __assign({ className: modules_cb0e83ce.content }, { children: [jsx("span", __assign({ className: modules_cb0e83ce.title }, { children: userdata.title })), jsx("p", __assign({ className: modules_cb0e83ce.description }, { children: userdata.description })), (options.showDate) && (jsx("p", __assign({ className: modules_cb0e83ce.date }, { children: userdata.date }))), (options.showTags) && (jsx("p", __assign({ className: modules_cb0e83ce.tags }, { children: tags })))] }))] })));
+}
+
+var css = "a {\r\n  text-decoration: none;\r\n}\r\n\r\n.List_module_container__a9312747 {\r\n  width: 30rem;\r\n  height: 100%;\r\n  min-width: 30rem;\r\n  max-width: 40rem;\r\n  display: block;\r\n  background: none;\r\n  padding-bottom: 0.2rem\r\n}\r\n\r\n.List_module_content__a9312747 {\r\n  display: flex;\r\n  flex-direction: column;\r\n  position: relative;\r\n  background: #fff;\r\n  gap: 1rem;\r\n}";
+var modules_7b101142 = {"container":"List_module_container__a9312747","content":"List_module_content__a9312747"};
+n(css,{});
+
+function List(_a) {
+    var _b = _a.username, username = _b === void 0 ? '' : _b, dataMedium = _a.dataMedium, _c = _a.options, options = _c === void 0 ? {} : _c;
+    var ssr = (options === null || options === void 0 ? void 0 : options.ssr) || false;
+    var data = useGetMedium(username, ssr);
+    var medium = (ssr) ? dataMedium === null || dataMedium === void 0 ? void 0 : dataMedium.dataMedium : data;
+    var openInNewTab = (options.hasOwnProperty('openInNewTab')) ? options.openInNewTab : true;
+    var nameTarget = (openInNewTab) ? '_blank' : '_self';
+    return (jsx("div", __assign({ className: modules_7b101142.container }, { children: jsx("span", __assign({ className: modules_7b101142.content }, { children: medium.map(function (item, index) { return (jsx("a", __assign({ href: item.link, target: nameTarget }, { children: jsx(RectangularCard, { userdata: item, options: options }) }), index)); }) })) })));
+}
+
+export { Carousel, List, fetchMedium };
