@@ -15,7 +15,7 @@ describe('Rendering test of components on the server', () => {
 
   test('Should rendering list on server', async() => {
 
-    const classCardContainer = 'RectangularCard_module_container__0b2073a4'
+    const classCardContainer = 'RectangularCard_module_container__1bd10726'
     
     const test = await axios.get('http://localhost:3333/list')
     
