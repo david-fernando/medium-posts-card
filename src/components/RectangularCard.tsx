@@ -8,7 +8,9 @@ import styles from '../style/RectangularCard.module.css'
 function RectangularCard({ userdata, options = {} }: CardProps){
   const { array } = useArray()
 
-  const borderRadius = (options.hasOwnProperty('borderRadius'))? options.borderRadius : true
+  const borderRadius = (options.hasOwnProperty('borderRadius'))? options.borderRadius : false
+  const showDate = (options.hasOwnProperty('showDate'))? options.showDate : true
+  const showTags = (options.hasOwnProperty('showTags'))? options.showTags : true
   const borderRadiusContainer = (borderRadius) && styles.borderRadiusContainer
   const borderRadiusThumbnail = (borderRadius) && styles.borderRadiusThumbnail
   const tagArray = (array(userdata.tags).isEmpty)? ['NoTags']: userdata.tags
@@ -28,20 +30,22 @@ function RectangularCard({ userdata, options = {} }: CardProps){
         <p className={styles.description}>
           { userdata.description }
         </p>
+        <span className={styles.details}>
         {
-          (options.showDate) && (
+          (showDate) && (
             <p className={styles.date}>
               { userdata.date }
             </p>
           )
         }
         {
-          (options.showTags) && (
+          (showTags) && (
             <p className={styles.tags}>
               { tags }
             </p>
           )
         }
+        </span>
       </span>
     </div>
   )
