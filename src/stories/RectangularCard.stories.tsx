@@ -12,8 +12,8 @@ export const Basic = (args) => <RectangularCard {...args} />
 Basic.args = { 
   userdata: cardData,
   options: {
-    borderRadius: true,
-    showTags: false,
-    showDate: false
+    borderRadius: false,
+    showTags: true,
+    showDate: true
   }
 }
