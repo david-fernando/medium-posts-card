@@ -1,3 +1,7 @@
+:global(*) {
+  font-size: 10px;
+}
+
 :global(a) {
   text-decoration: none;
 }
