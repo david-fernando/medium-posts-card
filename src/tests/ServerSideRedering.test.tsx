@@ -4,7 +4,7 @@ describe('Rendering test of components on the server', () => {
 
   test('Should rendering carousel on server', async() => {
 
-    const classCardContainer = '"Card_module_container__c1140499'
+    const classCardContainer = 'Card_module_container__c1140499'
     
     const test = await axios.get('http://localhost:3333/carousel')
     
