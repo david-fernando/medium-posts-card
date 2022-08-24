@@ -22,6 +22,7 @@
 - [Components](#components)
 - [Server Side Rendering](#server_side_rendering)
 - [How to contribute](#how_to_contribute)
+- [More](#more)
 - [Author](#authors)
 
 ## <span id="about">About </span>
@@ -129,7 +130,7 @@ export default Example
  - <h4>Usage</h4>
  To make the component render the server do the prefetching:
 ```javascript
-const data = fetchMedium('yourmediumusername')
+const dataMedium = fetchMedium('yourmediumusername')
 ```
 Next define _ssr_ as true, according to the example
 ```javascript
@@ -196,6 +197,11 @@ To run the tests.
 ```bash
 yarn test
 ```
+
+## <span id="more">More</span>
+
+Didn't you like any of the components? No problem! You can use <a href="https://github.com/david-fernando/medium-posts-api">Medium Posts API</a> to build your own react component.
+Moreover you too can contribute with code. Feel free to add new features to our library. We are open-source.
 
 ## ✍️ <span id="authors">Author</span>
 
