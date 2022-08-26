@@ -49,7 +49,7 @@ npm install mediumpostscard
 - <h4>Describe</h4>
   Shows a Carousel with your Medium articles
 
-- <h4>Carousel example</h4>
+- <h4>Screenshot</h4>
   <img height="170" src="https://i.imgur.com/FmVwAJ5.png" alt="Medium Posts Card Carousel Preview"></a>
 
 - <h4>Basic usage (with example)</h4>
@@ -89,7 +89,7 @@ export default Example
 - <h4>Describe</h4>
   Shows a list with your Medium articles
 
-- <h4>List example</h4>
+- <h4>Screenshot</h4>
   <img width="780" height="500" src="https://i.imgur.com/J11pgwP.png" alt="Medium Posts Card List Preview"></a>
 
 - <h4>Basic usage (with example)</h4>
