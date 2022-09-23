@@ -39,9 +39,15 @@ interface CardProps {
   options?: Options["options"]
 }
 
+interface LabelProps {
+  text?: string,
+  children: any
+}
+
 export {
   Props,
   Options,
   User,
-  CardProps
+  CardProps,
+  LabelProps
 }
