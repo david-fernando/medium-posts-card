@@ -24,4 +24,26 @@ describe('Rendering test of components on the server', () => {
     expect(classSelected).toBe(classCardContainer)
   })
 
+  test('Should rendering wrapped carousel on label', async() => {
+
+    const classCardContainer = 'Label_module_container__ee32c7c2'
+    
+    const test = await axios.get('http://localhost:3333/wrapcarousel')
+    
+    const classSelected = await test.data.match(classCardContainer)[0]
+
+    expect(classSelected).toBe(classCardContainer)
+  })
+
+  test('Should rendering wrapped list on label', async() => {
+
+    const classCardContainer = 'Label_module_container__ee32c7c2'
+    
+    const test = await axios.get('http://localhost:3333/wraplist')
+    
+    const classSelected = await test.data.match(classCardContainer)[0]
+
+    expect(classSelected).toBe(classCardContainer)
+  })
+
 })
