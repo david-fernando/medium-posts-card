@@ -41,7 +41,7 @@ interface CardProps {
 
 interface LabelProps {
   text?: string,
-  children: any
+  children: JSX.Element
 }
 
 export {
