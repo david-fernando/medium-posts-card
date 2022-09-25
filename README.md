@@ -125,6 +125,52 @@ export default Example
 | ssr          |   Set if the component should rendered on server   |    _Boolean_ |         false|
 
 
+### Label
+
+- <h4>Describe</h4>
+  Wrapper component that add label on other components
+
+- <h4>Screenshot</h4>
+  <img height="170" src="https://i.imgur.com/rBX3ttU.png" alt="Medium Posts Card Carousel with label"></a>
+
+- <h4>Example with carousel</h4>
+
+```javascript
+import { Carousel, Label } from 'mediumpostscard'
+
+function Example(){
+  return (
+    <Label>
+      <Carousel username="alex.streza" />
+    </Label>
+  )
+}
+
+export default Example
+```
+
+- <h4>Example with List</h4>
+
+```javascript
+import { List, Label } from 'mediumpostscard'
+
+function Example(){
+  return (
+    <Label>
+      <List username="alex.streza" />
+    </Label>
+  )
+}
+
+export default Example
+```
+- <h4>Valid Props</h4>
+
+| Prop name  |            Description             |     Type    |          Default |
+| ---------- |:----------------------------------:| ----------: | ----------------:|
+| text       |          Set text on label         | _String_    | 'Medium Articles'
+| children   |      Set component to be labeled   | JSX.Element |  No default
+
 ## <span id="server_side_rendering">Server Side Rendering</span>
 
  - <h4>Usage</h4>
