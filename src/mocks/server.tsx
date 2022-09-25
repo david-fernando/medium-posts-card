@@ -4,7 +4,7 @@ import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 import html from '../utils/htmlStructure'
 
-import { Carousel, List, fetchMedium } from '../../dist/index.esm.js'
+import { Carousel, List, Label, fetchMedium } from '../../dist/index.esm.js'
 
 const handlers = [
   rest.get('http://localhost:3333/carousel', async(request, response, context)=>{
@@ -26,6 +26,36 @@ const handlers = [
 
     const component = renderToString(
       <List dataMedium={data} options={{ssr: true}} />
+    )
+
+    return response(
+      context.xml(html(component))
+    )
+  }),
+
+  rest.get('http://localhost:3333/wrapcarousel', async(request, response, context)=>{
+
+    const data = await fetchMedium('davidfernandodamata21')
+
+    const component = renderToString(
+      <Label>
+        <Carousel dataMedium={data} options={{ssr: true}} />
+      </Label>
+    )
+
+    return response(
+      context.xml(html(component))
+    )
+  }),
+
+  rest.get('http://localhost:3333/wraplist', async(request, response, context)=>{
+
+    const data = await fetchMedium('davidfernandodamata21')
+
+    const component = renderToString(
+      <Label>
+        <List dataMedium={data} options={{ssr: true}} />
+      </Label>
     )
 
     return response(
